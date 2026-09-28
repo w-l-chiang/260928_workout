@@ -130,14 +130,14 @@
               <span class="day-icon">👕</span>
               <div>
                 <strong>Day 1 : 上半身訓練 (週二)</strong>
-                <small class="day-sub">胸、背、肩、手臂、上肢核心</small>
+                <small class="day-sub">胸、背、肩、手臂、肩袖與核心</small>
               </div>
             </button>
             <button class="day-pill" data-day="lower">
               <span class="day-icon">👖</span>
               <div>
                 <strong>Day 2 : 下半身訓練 (週四)</strong>
-                <small class="day-sub">臀、腿、小腿、核心與下肢鏈</small>
+                <small class="day-sub">臀腿、踝膝避震、脛前肌與平衡</small>
               </div>
             </button>
             <button class="day-pill squash-pill" data-day="squash">
@@ -145,6 +145,13 @@
               <div>
                 <strong>週末壁球 (週六/日)</strong>
                 <small class="day-sub">60 分鐘心肺爆發與敏捷打卡</small>
+              </div>
+            </button>
+            <button class="day-pill mobility-pill" data-day="mobility">
+              <span class="day-icon">🧘</span>
+              <div>
+                <strong>休息日・徒手伸展</strong>
+                <small class="day-sub">10~15 分鐘髖部胸背深層放鬆</small>
               </div>
             </button>
           </div>
@@ -294,6 +301,59 @@
               <span>儲存壁球打卡並更新熱點圖</span>
             </button>
           </div>
+        </div>
+      </div>
+
+      <!-- MOBILITY / REST DAY STRETCH VIEW -->
+      <div id="mobilityWorkoutView" class="mobility-view-container glass-panel hidden">
+        <div class="mobility-banner">
+          <div class="mobility-header-content">
+            <span class="mobility-badge">🧘 休息日・零器材徒手伸展</span>
+            <h2>10~15 分鐘全身筋膜深度修復 (Mobility Flow)</h2>
+            <p>完全不需要滾筒！精選 5 大深層徒手伸展動作，專為緩解重訓與壁球後的髖部卡關、圓肩胸緊與小腿緊繃設計。每個動作保持 30~45 秒。</p>
+          </div>
+          <div class="mobility-stat-box">
+            <span class="mobility-stat-num">5</span>
+            <span class="mobility-stat-label">深層拉伸動作</span>
+          </div>
+        </div>
+
+        <div class="workout-content-grid">
+          <div class="exercises-container" id="mobilityExercisesList">
+            <!-- Injected dynamically -->
+          </div>
+
+          <!-- Sidebar for Mobility -->
+          <aside class="workout-sidebar">
+            <div class="glass-panel summary-panel">
+              <h3>📝 伸展修復總結</h3>
+              
+              <div class="form-group">
+                <label for="mobilityDate">伸展日期</label>
+                <input type="date" id="mobilityDate" class="input-field">
+              </div>
+
+              <div class="form-group">
+                <label for="mobilityFeel">放鬆舒暢程度 (1-10)</label>
+                <div class="rpe-slider-wrapper">
+                  <input type="range" id="mobilityFeel" min="1" max="10" value="9" class="slider">
+                  <span class="rpe-indicator" id="mobilityFeelValue">9 分 (全身肌肉顯著放鬆，關節活動度大增)</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mobilityNotes">身體感受備忘</label>
+                <textarea id="mobilityNotes" rows="3" class="input-field" placeholder="記錄拉伸時哪裡特別緊繃、是否有獲得舒緩..."></textarea>
+              </div>
+
+              <div class="summary-actions">
+                <button id="saveMobilityBtn" class="btn btn-primary btn-block btn-lg" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  <span>完成伸展打卡並存入雲端</span>
+                </button>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
 
@@ -502,33 +562,36 @@
             <span class="phase-tag beginner">Phase 1 : 初級入門適應期</span>
             <span class="week-span">第 1 ~ 4 週</span>
           </div>
-          <h3>動作軌跡與關節韌帶適應</h3>
-          <p class="phase-desc">以「自重動作 + 輕啞鈴」建立本體感覺與肩胛/髖部動作控制，搭配週末 1 小時壁球建立心肺與下肢敏捷。</p>
+          <h3>動作軌跡、關節韌帶適應 ＆ 徒手伸展</h3>
+          <p class="phase-desc">以「自重動作 + 輕啞鈴」建立本體感覺與肩胛/髖部動作控制，融合肩袖外旋肌群與脛前肌避震防護，休息日搭配 10~15 分鐘零器材伸展流動。</p>
           <div class="phase-plan-preview">
             <div class="split-column">
               <h4>👕 週二 : 上半身 (Day 1)</h4>
               <ul>
-                <li><strong>跪姿/標準伏地挺身 (Push-up)</strong> 3組 × 8-12次</li>
-                <li><strong>俯身雙臂啞鈴划船 (Bent-over Row)</strong> 3組 × 10-12次</li>
+                <li><strong>伏地挺身 (Push-up / 跪姿)</strong> 3組 × 8-12次</li>
+                <li><strong>俯身啞鈴划船 (Bent-over Row)</strong> 3組 × 10-12次</li>
                 <li><strong>坐姿啞鈴肩推 (Shoulder Press)</strong> 3組 × 10-12次</li>
                 <li><strong>啞鈴側平舉 (Lateral Raise)</strong> 3組 × 12-15次</li>
+                <li><strong>肩袖外旋防護 (External Rotation)</strong> 3組 × 12-15次</li>
                 <li><strong>死蟲式核心穩定 (Dead Bug)</strong> 3組 × 12次</li>
               </ul>
             </div>
             <div class="split-column">
               <h4>👖 週四 : 下半身 (Day 2)</h4>
               <ul>
-                <li><strong>自重/酒杯深蹲 (Goblet Squat)</strong> 3組 × 10-15次</li>
+                <li><strong>酒杯深蹲 (Goblet Squat)</strong> 3組 × 10-12次</li>
                 <li><strong>啞鈴羅馬尼亞硬舉 (RDL)</strong> 3組 × 10-12次</li>
-                <li><strong>啞鈴/自重弓箭步 (Lunge)</strong> 3組 × 每邊 10次</li>
+                <li><strong>弓箭步下蹲 (Dumbbell Lunge)</strong> 3組 × 每邊 10次</li>
                 <li><strong>自重臀橋 (Glute Bridge)</strong> 3組 × 12-15次</li>
-                <li><strong>站姿提踵 (Standing Calf Raise)</strong> 3組 × 15-20次</li>
+                <li><strong>站姿提踵 (Calf Raise)</strong> 3組 × 15-20次</li>
+                <li><strong>靠牆抬腳尖 (Tibialis Raise)</strong> 3組 × 15-20次</li>
               </ul>
             </div>
             <div class="split-column squash-column">
-              <h4>🏸 週六/日 : 週末壁球 (Squash)</h4>
+              <h4>🏸 週末壁球 ＆ 🧘 休息日伸展</h4>
               <ul>
-                <li><strong>1 小時壁球有氧爆發</strong> (RPE 7-8，注意腳踝熱身)</li>
+                <li><strong>週末壁球 (Squash)</strong> 60 分鐘高強度心肺爆發</li>
+                <li><strong>休息日徒手伸展</strong> 90/90髖關節、門框胸肌、4字臀肌放鬆</li>
               </ul>
             </div>
           </div>
@@ -541,33 +604,36 @@
             <span class="phase-tag intermediate">Phase 2 : 中級肌力建立期</span>
             <span class="week-span">第 5 ~ 8 週</span>
           </div>
-          <h3>漸進超負荷與阻力提升</h3>
-          <p class="phase-desc">增加負重強度，著重離心控制（2~3秒下放），強化單腿平衡力量以直接提升壁球場上變向煞車能力。</p>
+          <h3>漸進超負荷、單側煞車控制 ＆ 旋轉核心</h3>
+          <p class="phase-desc">增加負重強度，著重離心控制（2~3秒慢放），加入保加利亞分腿蹲與俄羅斯轉體，強化壁球場上衝刺救球與急停變向煞車能力。</p>
           <div class="phase-plan-preview">
             <div class="split-column">
               <h4>👕 週二 : 上半身</h4>
               <ul>
-                <li><strong>啞鈴平躺臥推 (Dumbbell Bench Press)</strong> 4組 × 8-10次</li>
+                <li><strong>啞鈴平躺臥推 (Bench Press)</strong> 4組 × 8-10次</li>
                 <li><strong>單臂啞鈴划船 (One-arm Row)</strong> 4組 × 8-10次</li>
                 <li><strong>阿諾啞鈴肩推 (Arnold Press)</strong> 3組 × 10-12次</li>
                 <li><strong>啞鈴二頭彎舉 (Bicep Curl)</strong> 3組 × 10-12次</li>
                 <li><strong>長凳臂屈伸 (Bench Dip)</strong> 3組 × 10-12次</li>
+                <li><strong>負重俄羅斯轉體 (Russian Twist)</strong> 3組 × 20次</li>
               </ul>
             </div>
             <div class="split-column">
               <h4>👖 週四 : 下半身</h4>
               <ul>
-                <li><strong>負重酒杯深蹲 (Goblet Squat)</strong> 4組 × 8-10次</li>
-                <li><strong>雙手啞鈴硬舉 (Dumbbell Deadlift)</strong> 4組 × 8-10次</li>
-                <li><strong>保加利亞分腿蹲 (Bulgarian Split Squat)</strong> 3組 × 每邊 8-10次</li>
-                <li><strong>啞鈴負重提踵 (Calf Raise)</strong> 3組 × 12-15次</li>
-                <li><strong>側平板支撐 (Side Plank)</strong> 3組 × 每邊 30秒</li>
+                <li><strong>大重量酒杯深蹲 (Heavy Goblet)</strong> 4組 × 8-10次</li>
+                <li><strong>雙手重啞鈴硬舉 (Heavy RDL)</strong> 4組 × 8-10次</li>
+                <li><strong>保加利亞分腿蹲 (Bulgarian Split)</strong> 3組 × 每邊 8-10次</li>
+                <li><strong>負重提踵 (Weighted Calf Raise)</strong> 3組 × 12-15次</li>
+                <li><strong>側平板支撐 (Side Plank)</strong> 3組 × 每邊 30-45秒</li>
+                <li><strong>單腿平衡與脛前肌 (Balance & Tibialis)</strong> 3組 × 30秒</li>
               </ul>
             </div>
             <div class="split-column squash-column">
-              <h4>🏸 週六/日 : 週末壁球 (Squash)</h4>
+              <h4>🏸 週末壁球 ＆ 🧘 休息日伸展</h4>
               <ul>
-                <li><strong>1 小時壁球競賽節奏</strong> (結合單腳弓步煞車衝刺)</li>
+                <li><strong>週末壁球 (Squash)</strong> 60 分鐘比賽節奏與變向撲救</li>
+                <li><strong>休息日徒手伸展</strong> 偉大伸展、鴿子式、跪姿髖屈肌拉伸</li>
               </ul>
             </div>
           </div>
@@ -580,33 +646,36 @@
             <span class="phase-tag advanced">Phase 3 : 強化突破期</span>
             <span class="week-span">第 9 ~ 12 週</span>
           </div>
-          <h3>多關節複合發力與肌肥大刺激</h3>
-          <p class="phase-desc">引入槓鈴/大重量複合訓練，雕塑體態並打造強大肌力儲備與競技體能。</p>
+          <h3>複合多關節發力、競技爆發 ＆ 極致開髖</h3>
+          <p class="phase-desc">引入槓鈴/重啞鈴複合發力，專項提升壁球扣殺抽球的伐木旋轉爆發力與單腿支撐力量，打造強大肌力儲備與無傷體魄。</p>
           <div class="phase-plan-preview">
             <div class="split-column">
               <h4>👕 週二 : 上半身</h4>
               <ul>
-                <li><strong>槓鈴/重啞鈴臥推 (Barbell Bench Press)</strong> 4組 × 6-8次</li>
-                <li><strong>引體向上 / 滑輪下拉 (Pull-up / Lat Pulldown)</strong> 4組 × 8-10次</li>
-                <li><strong>槓鈴/啞鈴俯身划船 (Bent-over Row)</strong> 4組 × 8-10次</li>
-                <li><strong>站姿肩推 (Overhead Press)</strong> 3組 × 8-10次</li>
-                <li><strong>側平舉 + 懸垂舉腿 (Lateral Raise + Leg Raise)</strong> 3組 × 12次</li>
+                <li><strong>槓鈴/重啞鈴臥推 (Bench Press)</strong> 4組 × 6-8次</li>
+                <li><strong>引體向上 / 滑輪下拉 (Pull-up/Pulldown)</strong> 4組 × 6-8次</li>
+                <li><strong>槓鈴/啞鈴俯身划船 (Bent Row)</strong> 4組 × 8-10次</li>
+                <li><strong>站姿/坐姿肩推 (Overhead Press)</strong> 3組 × 8-10次</li>
+                <li><strong>斜板 Y-Raise (Rotator Cuff & Traps)</strong> 3組 × 12-15次</li>
+                <li><strong>站姿啞鈴伐木旋轉 (Wood Chop)</strong> 3組 × 每邊 10次</li>
               </ul>
             </div>
             <div class="split-column">
               <h4>👖 週四 : 下半身</h4>
               <ul>
-                <li><strong>槓鈴/負重深蹲 (Barbell Squat)</strong> 4組 × 6-8次</li>
-                <li><strong>傳統槓鈴硬舉 (Barbell Deadlift)</strong> 4組 × 5-8次</li>
-                <li><strong>負重行進弓步蹲 (Walking Lunge)</strong> 3組 × 12步</li>
-                <li><strong>負重臀橋 (Barbell Glute Bridge)</strong> 3組 × 10-12次</li>
-                <li><strong>俄羅斯轉體 (Russian Twist)</strong> 3組 × 15次</li>
+                <li><strong>槓鈴/重啞鈴深蹲 (Heavy Squat)</strong> 4組 × 6-8次</li>
+                <li><strong>傳統硬舉 (Barbell Deadlift)</strong> 4組 × 5-8次</li>
+                <li><strong>負重行進弓箭步 (Walking Lunge)</strong> 3組 × 12-16步</li>
+                <li><strong>槓鈴負重臀橋 (Glute Bridge)</strong> 3組 × 10-12次</li>
+                <li><strong>單腿啞鈴 RDL (Single-leg RDL)</strong> 3組 × 每邊 8-10次</li>
+                <li><strong>階梯提踵與脛前肌 (Deficit Calf)</strong> 3組 × 15-20次</li>
               </ul>
             </div>
             <div class="split-column squash-column">
-              <h4>🏸 週六/日 : 週末壁球 (Squash)</h4>
+              <h4>🏸 週末壁球 ＆ 🧘 休息日伸展</h4>
               <ul>
-                <li><strong>1 小時高強度對打</strong> (展現深厚腿力與核心穩定)</li>
+                <li><strong>週末壁球 (Squash)</strong> 60 分鐘高強度對抗</li>
+                <li><strong>休息日徒手伸展</strong> 蛙式內收肌、沙發伸展、蠍子式胸腰旋轉</li>
               </ul>
             </div>
           </div>
@@ -624,23 +693,23 @@
           <div class="guide-box">
             <div class="guide-icon">📅</div>
             <h3>為什麼將下半身排在週四、壁球排在週末？</h3>
-            <p>壁球需要大量單腳急速煞車、側向下蹲與衝刺，對膝蓋髕骨肌腱與腳踝負擔極大。週四練腿後，週五充分休息，到週六/日早上有 **48~72 小時充足修復期**，能徹底避免下肢過度疲勞導致扭傷。</p>
+            <p>壁球需要大量單腳急速煞車、側向下蹲與衝刺，對膝蓋髕骨肌腱與腳踝負擔極大。週四練腿後，週五充分休息，到週六/日早上有 <strong>48~72 小時充足修復期</strong>，能徹底避免下肢過度疲勞導致扭傷。</p>
           </div>
 
           <div class="guide-box">
             <div class="guide-icon">🏸</div>
             <h3>重訓如何強化壁球表現？</h3>
             <p>
-              • <strong>酒杯深蹲/分腿蹲</strong>：增強網前跨步煞車力量，救球更穩。<br>
-              • <strong>硬舉與臀橋</strong>：強化臀大肌爆發力，啟動步伐更快。<br>
-              • <strong>肩推與划船</strong>：穩定肩袖肌群，保護揮拍手臂不拉傷。
+              • <strong>酒杯深蹲/保加利亞分腿蹲</strong>：增強網前跨步急停煞車力量，救球更穩不翻船。<br>
+              • <strong>硬舉與臀橋</strong>：強化臀大肌與後側鏈爆發力，啟動步伐更快。<br>
+              • <strong>肩袖外旋與伐木轉體</strong>：加強揮拍核心旋轉力與肩袖防護，避免肩夾擠受傷。
             </p>
           </div>
 
           <div class="guide-box">
-            <div class="guide-icon">🚶</div>
-            <h3>日常散步的角色</h3>
-            <p>日常散步（透過 iPhone 健康 App 紀錄）屬於低強度非運動消耗 (NEAT)，能促進全身血液循環，加速重訓與壁球後的乳酸代謝與肌肉放鬆，是最理想的主動恢復。</p>
+            <div class="guide-icon">🧘</div>
+            <h3>休息日「零器材徒手伸展」的最佳時間點</h3>
+            <p>週三、週五或週日晚上安排 10~15 分鐘徒手伸展（90/90髖關節放鬆、門框胸肌伸展、仰臥4字臀肌拉伸）。不需滾筒即可深層釋放緊繃筋膜，促進血液循環與神經系統放鬆。</p>
           </div>
 
           <div class="guide-box">
@@ -696,6 +765,6 @@
   <!-- Load Database, Supabase SDK and Application Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="exercises_db.js"></script>
-  <script src="app.js?v=2.0"></script>
+  <script src="app.js?v=2.2"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
   const PRESET_PLANS = {
     1: {
       name: 'Phase 1 : 初級入門適應期 (Week 1-4)',
-      description: '自重動作與輕量啞鈴為主，建立動作控制與關節適應，週末搭配 1 小時壁球。',
+      description: '自重動作與輕量啞鈴為主，建立動作控制與關節適應，融合肩袖肌群防護與脛前肌緩衝，週末搭配 1 小時壁球。',
       upper: [
         {
           id: '0662',
@@ -68,6 +68,17 @@
           targetReps: '12-15',
           suggestedWeight: 2,
           notes: '輕重量即可，肘微屈，意念專注在肩膀側面帶起手臂至平行地面。'
+        },
+        {
+          id: '0308',
+          name: 'Dumbbell External Rotation (肩袖外旋肌群防護)',
+          target: '肩袖肌群 / 棘下肌 (Rotator Cuff)',
+          muscleGroup: 'delts',
+          equipment: 'dumbbell / body weight',
+          defaultSets: 3,
+          targetReps: '每邊 12-15',
+          suggestedWeight: 1.5,
+          notes: '手肘夾緊身體呈90度，向外旋轉小臂。壁球高速揮拍與肩推最重要的防受傷保養動作！'
         },
         {
           id: '0276',
@@ -136,13 +147,61 @@
           targetReps: '15-20',
           suggestedWeight: 4,
           notes: '前腳掌踩在微墊高處，緩慢墊腳提踵至最高點，充分擠壓小腿。'
+        },
+        {
+          id: '1368',
+          name: 'Wall Tibialis Raise (靠牆抬腳尖 / 脛前肌避震防護)',
+          target: '脛骨前肌 / 踝關節 (Tibialis Anterior)',
+          muscleGroup: 'calves',
+          equipment: 'body weight',
+          defaultSets: 3,
+          targetReps: '15-20',
+          suggestedWeight: 0,
+          notes: '背部靠牆雙腳前伸，勾起腳尖感受小腿迎面骨脛前肌酸脹。強化急停煞車與保護膝關節關鍵！'
+        }
+      ],
+      mobility: [
+        {
+          id: 'mob_1',
+          name: '90/90 Hip Mobility (90/90 髖關節內外旋流動)',
+          target: '髖關節囊 / 臀肌 / 髖屈肌',
+          holdSeconds: 35,
+          notes: '雙腿前後屈膝呈90度坐於地面，軀幹前傾感受臀肌深層放鬆，隨後緩慢旋轉至對側。改善深蹲下不去與骨盆卡卡。'
+        },
+        {
+          id: '1405',
+          name: 'Doorway / Wall Pec Stretch (門框/牆壁胸大肌深層拉伸)',
+          target: '胸大肌 / 三角肌前束',
+          holdSeconds: 30,
+          notes: '小臂貼於門框或牆面，軀幹緩慢向前推進並微轉，感受胸肌與肩膀前側充分展開，舒緩久坐打電腦圓肩。'
+        },
+        {
+          id: '1710',
+          name: 'Piriformis Figure-4 Stretch (仰臥 4 字臀肌與梨狀肌放鬆)',
+          target: '臀大肌 / 梨狀肌 / 坐骨神經通道',
+          holdSeconds: 35,
+          notes: '平躺將右腳踝跨在左膝上方呈 4 字型，雙手抱住左大腿後側拉向胸口。有效緩解壁球深跨步後臀部酸緊。'
+        },
+        {
+          id: '1708',
+          name: 'Wall Calf & Hamstring Stretch (牆壁小腿跟腱與大腿後側拉伸)',
+          target: '小腿腓腸肌 / 膕繩肌 / 足底筋膜',
+          holdSeconds: 30,
+          notes: '前腳掌貼在牆根或踢腳板，膝蓋打直身體前傾。幫助壁球頻繁急停跳躍後的跟腱回彈。'
+        },
+        {
+          id: '1512',
+          name: 'Cat-Cow to Child’s Pose (貓牛式流動銜接嬰兒式)',
+          target: '全脊椎 / 下背 / 背闊肌',
+          holdSeconds: 45,
+          notes: '四足跪姿，吸氣抬頭塌腰、呼氣拱背低頭，最後臀部坐向腳後跟放鬆雙臂前伸。釋放脊椎整週壓力。'
         }
       ]
     },
 
     2: {
       name: 'Phase 2 : 中級肌力建立期 (Week 5-8)',
-      description: '增加負荷與單側控制，著重離心慢放（2-3秒），強化壁球衝刺煞車所需的腿部肌力。',
+      description: '增加負荷與單側控制，著重離心慢放（2-3秒），強化壁球衝刺煞車與轉身抽球所需的旋轉核心。',
       upper: [
         {
           id: '0289',
@@ -198,6 +257,17 @@
           targetReps: '10-12',
           suggestedWeight: 0,
           notes: '背部貼近長凳邊緣下放至手肘呈 90 度，三頭肌發力推回起始位置。'
+        },
+        {
+          id: '0687',
+          name: 'Dumbbell Russian Twist (負重俄羅斯轉體)',
+          target: '腹斜肌 / 核心旋轉鏈 (Obliques & Core)',
+          muscleGroup: 'abs',
+          equipment: 'dumbbell / body weight',
+          defaultSets: 3,
+          targetReps: '20次 (每側10)',
+          suggestedWeight: 3,
+          notes: '坐姿屈膝微後傾，手持輕啞鈴帶動軀幹轉體觸地。強化壁球正反手轉體抽球爆發力！'
         }
       ],
       lower: [
@@ -255,13 +325,61 @@
           targetReps: '每邊 30-45秒',
           suggestedWeight: 0,
           notes: '身體從頭至腳跟呈一直線，核心收緊，骨盆不往下沉。'
+        },
+        {
+          id: '0020',
+          name: 'Single-leg Balance & Tibialis (單腿閉眼平衡 + 靠牆抬腳尖)',
+          target: '踝關節本體感覺 / 脛前肌 (Ankle Stability)',
+          muscleGroup: 'calves',
+          equipment: 'body weight',
+          defaultSets: 3,
+          targetReps: '每邊 30秒 / 20次',
+          suggestedWeight: 0,
+          notes: '單腳站立微屈膝訓練踝周微小肌肉，接續靠牆抬腳尖，強化壁球變向不翻船。'
+        }
+      ],
+      mobility: [
+        {
+          id: 'mob_2_1',
+          name: 'World’s Greatest Stretch (世界上最偉大的伸展)',
+          target: '胸椎旋轉 / 髖屈肌 / 臀肌 / 膕繩肌',
+          holdSeconds: 40,
+          notes: '深弓步下沉，同側手肘向下貼近地面，接著向天空打開胸椎並旋轉抬手臂。全方位打開活動度！'
+        },
+        {
+          id: '1709',
+          name: 'Pigeon Pose (鴿子式深度臀肌開髖)',
+          target: '臀大肌 / 梨狀肌 / 內收肌群',
+          holdSeconds: 40,
+          notes: '前腿屈膝橫於身前，後腿向後筆直延伸，骨盆擺正下沉，軀幹前趴於墊上。'
+        },
+        {
+          id: '1713',
+          name: 'Kneeling Hip Flexor & Quad Stretch (跪姿髖屈肌與股四頭肌拉伸)',
+          target: '髂腰肌 / 股直肌',
+          holdSeconds: 35,
+          notes: '單膝跪地，骨盆後傾微前推，後側手抓住後腳踝拉向臀部，深層拉伸大腿前側與髖屈肌。'
+        },
+        {
+          id: '1405',
+          name: 'Doorway Lat & Shoulder Stretch (背闊肌與肩背延展)',
+          target: '背闊肌 / 大圓肌 / 肩關節後側',
+          holdSeconds: 35,
+          notes: '雙手扶住門框或柱子，屈髖向後下沉，讓背闊肌與側軀幹充分拉伸延長。'
+        },
+        {
+          id: '1708',
+          name: 'Downward Dog to Calf Pedal (下犬式踩腳踏小腿跟腱拉伸)',
+          target: '整條後側鏈 / 小腿比目魚肌 / 腓腸肌',
+          holdSeconds: 45,
+          notes: '呈倒 V 字型推起臀部，雙腳輪流向下踩實腳後跟，感受小腿與大腿後側交替深層牽拉。'
         }
       ]
     },
 
     3: {
       name: 'Phase 3 : 強化突破期 (Week 9-12)',
-      description: '多關節槓鈴/重啞鈴複合發力，挑戰漸進超負荷與極致爆發力。',
+      description: '多關節槓鈴/重啞鈴複合發力，挑戰漸進超負荷與極致爆發力，專項提升壁球擊球力量與急速折返體能。',
       upper: [
         {
           id: '0025',
@@ -309,14 +427,25 @@
         },
         {
           id: '0334',
-          name: 'Dumbbell Lateral Raise (側平舉)',
-          target: '三角肌中束 (Side Delts)',
+          name: 'Incline Y-Raise / Lateral Raise (斜板 Y-Raise / 側平舉)',
+          target: '三角肌中束 / 下斜方與肩袖 (Lower Traps & Delts)',
           muscleGroup: 'delts',
           equipment: 'dumbbell',
           defaultSets: 3,
           targetReps: '12-15',
-          suggestedWeight: 4,
-          notes: '雕塑立體南瓜肩與強化後肩肩袖健康。'
+          suggestedWeight: 3,
+          notes: '俯臥於斜板呈 30 度向上舉成 Y 字型，極致活化下斜方肌與前鋸肌，打造無傷肩膀。'
+        },
+        {
+          id: '0014',
+          name: 'Standing Dumbbell Wood Chop (站姿啞鈴伐木旋轉)',
+          target: '腹斜肌 / 爆發旋轉鏈 (Core Rotational Power)',
+          muscleGroup: 'abs',
+          equipment: 'dumbbell',
+          defaultSets: 3,
+          targetReps: '每邊 10',
+          suggestedWeight: 5,
+          notes: '由低向高對角線旋轉揮動啞鈴，下肢蹬轉帶動核心，是壁球扣殺與強力抽球的專項肌力！'
         }
       ],
       lower: [
@@ -365,15 +494,63 @@
           notes: '臀部頂峰收縮停留 2 秒，打造飽滿臀型。'
         },
         {
-          id: '0687',
-          name: 'Russian Twist (俄羅斯轉體)',
-          target: '腹內外斜肌 / 核心 (Abs & Obliques)',
-          muscleGroup: 'abs',
-          equipment: 'body weight / dumbbell',
+          id: '1459',
+          name: 'Single-leg Dumbbell RDL (單腿啞鈴羅馬尼亞硬舉)',
+          target: '單側後側鏈與臀中肌平衡 (Hamstrings & Glute Medius)',
+          muscleGroup: 'hamstrings',
+          equipment: 'dumbbell',
           defaultSets: 3,
-          targetReps: '20次 (每邊10)',
-          suggestedWeight: 2,
-          notes: '旋轉軀幹帶動雙手觸碰兩側地面。'
+          targetReps: '每側 8-10',
+          suggestedWeight: 6,
+          notes: '單腳支撐屈髖，另一腿向後伸展成一直線。修復左右腿力量不均與壁球單腳蹬跨支撐。'
+        },
+        {
+          id: '0417',
+          name: 'Deficit Calf & Tibialis Raise (階梯深層提踵 + 脛前肌極致強化)',
+          target: '小腿肌群全方位 / 踝關節 (Calves & Tibialis)',
+          muscleGroup: 'calves',
+          equipment: 'dumbbell',
+          defaultSets: 3,
+          targetReps: '15-20',
+          suggestedWeight: 8,
+          notes: '腳跟下沉至最低點獲得完全拉伸，頂峰提踵停留 1 秒，接續靠牆抬腳尖。'
+        }
+      ],
+      mobility: [
+        {
+          id: '1712',
+          name: 'Frog Stretch (蛙式內收肌深度放鬆)',
+          target: '大腿內收肌群 / 髖臼深層靈活度',
+          holdSeconds: 45,
+          notes: '雙膝大跨度分開跪地，雙腳內側貼地，小臂撐地後慢慢將臀部向後推。極佳釋放大跨步救球緊繃。'
+        },
+        {
+          id: 'mob_3_2',
+          name: 'Couch Stretch (沙發伸展 - 極致髖屈肌與股四頭放鬆)',
+          target: '髂腰肌 / 股直肌 / 骨盆前傾矯正',
+          holdSeconds: 45,
+          notes: '後膝貼近牆面或沙發底，前腳踩地呈弓步，軀幹挺直。深層解鎖深蹲與大重量後的下背與髖屈緊繃！'
+        },
+        {
+          id: 'mob_3_3',
+          name: 'Prone Scorpion Stretch (俯臥蠍子式胸背與腰椎旋轉)',
+          target: '胸大肌 / 髖屈肌 / 胸腰椎旋轉鏈',
+          holdSeconds: 35,
+          notes: '俯臥雙臂向兩側平展，一側腿抬起彎曲並跨過身體觸碰對側地面。極佳緩解旋轉打球後的脊椎壓力。'
+        },
+        {
+          id: 'mob_3_4',
+          name: 'Dynamic Thread the Needle (穿針式胸椎靈活性流動)',
+          target: '胸椎靈活度 / 後肩 / 菱形肌',
+          holdSeconds: 40,
+          notes: '四足跪姿，一手穿過另一側腋下胸口貼地，呼氣時向天空打開旋轉。增加壁球上肢揮拍幅度。'
+        },
+        {
+          id: '1368',
+          name: 'Deep Squat Pry & Ankle Rock (深蹲底部開髖與腳踝活動度)',
+          target: '踝關節背屈 / 髖關節 / 骨盆底肌群',
+          holdSeconds: 50,
+          notes: '蹲至最低點，雙肘抵住雙膝內側向外推，重心左右輕微轉移，增加腳踝活動度避免深蹲卡腳踝。'
         }
       ]
     }
@@ -572,8 +749,10 @@
     const today = new Date().toISOString().split('T')[0];
     const dateInput = document.getElementById('workoutDate');
     const squashDateInput = document.getElementById('squashDate');
+    const mobilityDateInput = document.getElementById('mobilityDate');
     if (dateInput) dateInput.value = today;
     if (squashDateInput) squashDateInput.value = today;
+    if (mobilityDateInput) mobilityDateInput.value = today;
   }
 
   // --- EVENT BINDINGS ---
@@ -620,7 +799,7 @@
       });
     });
 
-    // Day Switcher (Upper / Lower / Squash)
+    // Day Switcher (Upper / Lower / Squash / Mobility)
     document.querySelectorAll('.day-pill').forEach(pill => {
       pill.addEventListener('click', () => {
         document.querySelectorAll('.day-pill').forEach(p => p.classList.remove('active'));
@@ -647,30 +826,49 @@
     // RPE Slider label update (Strength)
     const rpeSlider = document.getElementById('sessionRpe');
     const rpeLabel = document.getElementById('sessionRpeValue');
-    rpeSlider.addEventListener('input', () => {
-      const val = parseInt(rpeSlider.value, 10);
-      let desc = '';
-      if (val <= 4) desc = '極輕度熱身感';
-      else if (val <= 6) desc = '適中負荷 (還能做 4-5 下)';
-      else if (val === 7) desc = '中高強度 (還能做 2~3 下)';
-      else if (val === 8) desc = '黃金增肌區間 (還能做 2 下)';
-      else if (val === 9) desc = '極高強度 (極限剩 1 下)';
-      else desc = '極限力竭 (無法再多做 1 下)';
-      rpeLabel.textContent = `RPE ${val} (${desc})`;
-    });
+    if (rpeSlider && rpeLabel) {
+      rpeSlider.addEventListener('input', () => {
+        const val = parseInt(rpeSlider.value, 10);
+        let desc = '';
+        if (val <= 4) desc = '極輕度熱身感';
+        else if (val <= 6) desc = '適中負荷 (還能做 4-5 下)';
+        else if (val === 7) desc = '中高強度 (還能做 2~3 下)';
+        else if (val === 8) desc = '黃金增肌區間 (還能做 2 下)';
+        else if (val === 9) desc = '極高強度 (極限剩 1 下)';
+        else desc = '極限力竭 (無法再多做 1 下)';
+        rpeLabel.textContent = `RPE ${val} (${desc})`;
+      });
+    }
 
     // Squash RPE Slider
     const squashRpeSlider = document.getElementById('squashRpe');
     const squashRpeLabel = document.getElementById('squashRpeValue');
-    squashRpeSlider.addEventListener('input', () => {
-      const val = parseInt(squashRpeSlider.value, 10);
-      let desc = '';
-      if (val <= 6) desc = '輕鬆練球 / 步伐熱身';
-      else if (val <= 7) desc = '中度心肺對打 (微喘)';
-      else if (val === 8) desc = '高強度心肺，呼吸急促汗流浹背';
-      else desc = '極高強度對抗賽 / 體能極限燃燒';
-      squashRpeLabel.textContent = `RPE ${val} (${desc})`;
-    });
+    if (squashRpeSlider && squashRpeLabel) {
+      squashRpeSlider.addEventListener('input', () => {
+        const val = parseInt(squashRpeSlider.value, 10);
+        let desc = '';
+        if (val <= 6) desc = '輕鬆練球 / 步伐熱身';
+        else if (val <= 7) desc = '中度心肺對打 (微喘)';
+        else if (val === 8) desc = '高強度心肺，呼吸急促汗流浹背';
+        else desc = '極高強度對抗賽 / 體能極限燃燒';
+        squashRpeLabel.textContent = `RPE ${val} (${desc})`;
+      });
+    }
+
+    // Mobility Feel Slider
+    const mobilityFeelSlider = document.getElementById('mobilityFeel');
+    const mobilityFeelLabel = document.getElementById('mobilityFeelValue');
+    if (mobilityFeelSlider && mobilityFeelLabel) {
+      mobilityFeelSlider.addEventListener('input', () => {
+        const val = parseInt(mobilityFeelSlider.value, 10);
+        let desc = '';
+        if (val <= 5) desc = '輕度伸展';
+        else if (val <= 7) desc = '關節微熱，肌肉張力釋放';
+        else if (val <= 8) desc = '深度舒展，緊繃感明顯消除';
+        else desc = '全身肌肉顯著放鬆，關節活動度大增';
+        mobilityFeelLabel.textContent = `${val} 分 (${desc})`;
+      });
+    }
 
     // Mood Chips
     document.querySelectorAll('.mood-chips .mood-chip').forEach(chip => {
@@ -687,6 +885,12 @@
 
     // Save Squash
     document.getElementById('saveSquashBtn').addEventListener('click', saveSquashSession);
+
+    // Save Mobility
+    const saveMobilityBtn = document.getElementById('saveMobilityBtn');
+    if (saveMobilityBtn) {
+      saveMobilityBtn.addEventListener('click', saveMobilitySession);
+    }
 
     // Heatmap Time Range Filter
     document.querySelectorAll('#heatmapTimeFilter .time-btn').forEach(btn => {
@@ -748,9 +952,11 @@
   // --- WORKOUT RENDERING ---
   function renderCurrentWorkout() {
     const isSquash = state.currentDay === 'squash';
+    const isMobility = state.currentDay === 'mobility';
 
     const strengthGrid = document.getElementById('strengthWorkoutGrid');
     const squashView = document.getElementById('squashWorkoutView');
+    const mobilityView = document.getElementById('mobilityWorkoutView');
     const strengthStatsBar = document.getElementById('strengthStatsBar');
     const restTimerWidget = document.getElementById('restTimerWidget');
 
@@ -758,13 +964,25 @@
       strengthGrid.style.display = 'none';
       strengthStatsBar.style.display = 'none';
       restTimerWidget.style.display = 'none';
+      if (mobilityView) mobilityView.classList.add('hidden');
       squashView.classList.remove('hidden');
+      return;
+    } else if (isMobility) {
+      strengthGrid.style.display = 'none';
+      strengthStatsBar.style.display = 'none';
+      restTimerWidget.style.display = 'none';
+      squashView.classList.add('hidden');
+      if (mobilityView) {
+        mobilityView.classList.remove('hidden');
+        renderMobilityWorkout();
+      }
       return;
     } else {
       strengthGrid.style.display = 'grid';
       strengthStatsBar.style.display = 'flex';
       restTimerWidget.style.display = 'flex';
       squashView.classList.add('hidden');
+      if (mobilityView) mobilityView.classList.add('hidden');
     }
 
     const plan = PRESET_PLANS[state.currentPhase];
@@ -875,6 +1093,177 @@
 
     bindCardEvents();
   }
+
+  // --- RENDER MOBILITY WORKOUT FLOW ---
+  function renderMobilityWorkout() {
+    const plan = PRESET_PLANS[state.currentPhase];
+    const mobilityExercises = plan.mobility || [];
+    const container = document.getElementById('mobilityExercisesList');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    mobilityExercises.forEach((ex, idx) => {
+      const dbItem = window.EXERCISES_DB ? window.EXERCISES_DB.find(item => item.id === ex.id) : null;
+      const thumbUrl = dbItem ? dbItem.image : 'https://placehold.co/80x80/064e3b/ffffff?text=STRETCH';
+      const gifUrl = dbItem ? dbItem.gif_url : '';
+      const stateKey = `mobility_${state.currentPhase}_${ex.id || idx}`;
+
+      if (state.logs[stateKey] === undefined) {
+        state.logs[stateKey] = false;
+      }
+
+      const isCompleted = state.logs[stateKey];
+
+      const card = document.createElement('div');
+      card.className = 'glass-panel exercise-card mobility-card';
+      card.dataset.mobilityId = ex.id || idx;
+
+      card.innerHTML = `
+        <div class="exercise-header-row">
+          <div class="exercise-title-meta">
+            <img src="${thumbUrl}" alt="${ex.name}" class="exercise-thumbnail-preview" onerror="this.src='https://placehold.co/80x80/083344/ffffff?text=STRETCH'" title="點擊查看示範">
+            <div class="exercise-info">
+              <h4 style="color:#22d3ee;">${ex.name}</h4>
+              <div class="exercise-tags">
+                <span class="tag-badge target" style="background:rgba(6,182,212,0.15); color:#22d3ee;">放鬆部位: ${ex.target}</span>
+                <span class="tag-badge equip">徒手零器材</span>
+                <span class="tag-badge">建議保持: ${ex.holdSeconds || 30} 秒</span>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-actions-top">
+            ${dbItem ? `
+              <button class="btn btn-outline btn-sm view-details-btn" data-exid="${ex.id}" data-gif="${gifUrl}">
+                <span>示範</span>
+              </button>
+            ` : ''}
+          </div>
+        </div>
+
+        <div style="font-size:0.83rem; color:#cbd5e1; margin-bottom:0.85rem; line-height:1.45; padding: 6px 10px; background: rgba(0,0,0,0.25); border-radius:6px;">
+          🧘 <strong>伸展指引：</strong>${ex.notes}
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:0.5rem; padding-top:0.5rem; border-top:1px solid rgba(255,255,255,0.06);">
+          <button class="hold-timer-btn" data-seconds="${ex.holdSeconds || 30}" data-state-key="${stateKey}">
+            <span>⏱️ 開始保持倒數 (${ex.holdSeconds || 30}s)</span>
+          </button>
+          <button class="set-check-btn ${isCompleted ? 'completed' : ''}" data-state-key="${stateKey}" title="標記完成">
+            ✓
+          </button>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    bindMobilityEvents();
+  }
+
+  function bindMobilityEvents() {
+    // Hold Timer countdown on mobility cards
+    document.querySelectorAll('.hold-timer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('running')) return;
+        const totalSec = parseInt(btn.dataset.seconds, 10) || 30;
+        let leftSec = totalSec;
+        const stateKey = btn.dataset.stateKey;
+
+        btn.classList.add('running');
+        btn.querySelector('span').textContent = `⏳ 深度保持中... (${leftSec}s)`;
+        playBeep(600, 0.1);
+
+        const holdInterval = setInterval(() => {
+          leftSec--;
+          if (leftSec > 0) {
+            btn.querySelector('span').textContent = `⏳ 深度保持中... (${leftSec}s)`;
+            if (leftSec <= 3) playBeep(750, 0.08);
+          } else {
+            clearInterval(holdInterval);
+            btn.classList.remove('running');
+            btn.classList.add('completed');
+            btn.querySelector('span').textContent = `✨ 伸展完成 (${totalSec}s)`;
+            playBeep(1100, 0.4);
+            showToast('🎉 伸展完成！肌肉已獲得深層放鬆');
+            
+            // Mark check button
+            state.logs[stateKey] = true;
+            const checkBtn = btn.parentElement.querySelector('.set-check-btn');
+            if (checkBtn) checkBtn.classList.add('completed');
+          }
+        }, 1000);
+      });
+    });
+
+    // Check complete toggle
+    document.querySelectorAll('#mobilityExercisesList .set-check-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const stateKey = btn.dataset.stateKey;
+        state.logs[stateKey] = !state.logs[stateKey];
+        btn.classList.toggle('completed', state.logs[stateKey]);
+        if (state.logs[stateKey]) {
+          playBeep(980, 0.12);
+        }
+      });
+    });
+
+    // Modal detail
+    document.querySelectorAll('#mobilityExercisesList .view-details-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const exId = btn.dataset.exid;
+        openExerciseModal(exId);
+      });
+    });
+  }
+
+  // --- SAVE MOBILITY SESSION ---
+  function saveMobilitySession() {
+    const date = document.getElementById('mobilityDate').value || new Date().toISOString().split('T')[0];
+    const feel = parseInt(document.getElementById('mobilityFeel').value, 10) || 9;
+    const notes = document.getElementById('mobilityNotes').value;
+    const plan = PRESET_PLANS[state.currentPhase];
+    const mobilityExercises = plan.mobility || [];
+
+    const completed = [];
+    mobilityExercises.forEach((ex, idx) => {
+      const stateKey = `mobility_${state.currentPhase}_${ex.id || idx}`;
+      if (state.logs[stateKey]) {
+        completed.push(ex.name);
+      }
+    });
+
+    const mobilityRecord = {
+      id: 'mobility_' + Date.now(),
+      type: 'mobility',
+      date,
+      dayType: '🧘 休息日・徒手伸展 (Mobility Flow)',
+      phase: state.currentPhase,
+      phaseName: plan.name,
+      feel,
+      completedCount: completed.length || mobilityExercises.length,
+      exercises: completed.length > 0 ? completed : mobilityExercises.map(m => m.name),
+      notes,
+      createdAt: new Date().toISOString()
+    };
+
+    let history = getHistory();
+    history.unshift(mobilityRecord);
+    localStorage.setItem('fitlog_history', JSON.stringify(history));
+
+    if (supabase) {
+      supabase.from('fitlog_history').upsert(mobilityRecord).then(({ error }) => {
+        if (error) console.warn('Supabase mobility save error:', error);
+      });
+    }
+
+    showToast('🎉 休息日伸展打卡成功！全身筋膜已深度修復！');
+    renderHistory();
+    renderHeatmap();
+
+    document.querySelector('[data-tab="history"]').click();
+  }
+
 
   function bindCardEvents() {
     // View detail modal
@@ -1186,6 +1575,23 @@
             <div class="history-item-badges">
               <span class="tag-badge squash-tag">壁球 60min</span>
               <span class="tag-badge equip">RPE ${item.rpe}</span>
+              <button class="btn btn-outline btn-sm delete-history-item" data-id="${item.id}" title="刪除此筆">&times;</button>
+            </div>
+          </div>
+        `;
+      }
+
+      if (item.type === 'mobility') {
+        return `
+          <div class="history-item-card mobility-card" style="border-left-color: #06b6d4;">
+            <div class="history-item-info">
+              <strong style="color:#22d3ee;">${item.date} · ${item.dayType}</strong>
+              <span>${item.phaseName || ''} | 完成 ${item.completedCount || 5} 個徒手伸展動作 | 放鬆感受 ${item.feel || 9}/10 分</span>
+              ${item.notes ? `<p style="font-size:0.8rem; color:#67e8f9; margin-top:4px;">🧘 ${item.notes}</p>` : ''}
+            </div>
+            <div class="history-item-badges">
+              <span class="tag-badge" style="background:rgba(6,182,212,0.2); color:#22d3ee;">筋膜放鬆</span>
+              <span class="tag-badge equip">感受 ${item.feel || 9}/10</span>
               <button class="btn btn-outline btn-sm delete-history-item" data-id="${item.id}" title="刪除此筆">&times;</button>
             </div>
           </div>
