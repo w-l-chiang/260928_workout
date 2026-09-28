@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitLog Pro 健身日記 | 一週二練・上下肢與壁球運動日誌</title>
+  <meta name="description" content="結合 1,324+ 動態動作庫的一週二練（上半身/下半身）循序漸進訓練、週末壁球打卡與人體肌肉熱點圖 (Muscle Heatmap) 視覺化系統。">
+  <!-- PWA & iOS Home Screen Settings -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0e17">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FitLog Pro">
+  <link rel="apple-touch-icon" href="https://img.icons8.com/fluent/192/dumbbell.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow & Mesh -->
+  <div class="bg-mesh"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="logo-icon">💪</div>
+        <div>
+          <h1>FitLog <span>Pro</span></h1>
+          <p class="subtitle">一週二練・上下肢漸進重訓 ＆ 週末壁球日誌</p>
+        </div>
+      </div>
+      
+      <!-- Phase Pill Selector -->
+      <div class="phase-selector-wrapper">
+        <span class="selector-label">重訓週期：</span>
+        <div class="phase-tabs" id="phaseTabs">
+          <button class="phase-tab active" data-phase="1">
+            <span class="phase-num">P1</span>
+            <span class="phase-text">基礎入門 (W1-4)</span>
+          </button>
+          <button class="phase-tab" data-phase="2">
+            <span class="phase-num">P2</span>
+            <span class="phase-text">肌力進階 (W5-8)</span>
+          </button>
+          <button class="phase-tab" data-phase="3">
+            <span class="phase-num">P3</span>
+            <span class="phase-text">強化突破 (W9-12)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cloud Sync Status Badge -->
+      <div class="cloud-sync-badge" id="cloudSyncBadge" title="Supabase 雲端資料庫已連線，手機與電腦即時同步">
+        <span class="sync-dot"></span>
+        <span class="sync-text">雲端同步中</span>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="header-actions">
+        <button id="openLibraryBtn" class="btn btn-secondary btn-icon" title="瀏覽動作庫">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-0.05"/><path d="M6 6h10M6 10h10M6 14h6"/></svg>
+          <span>動作庫 (1324+)</span>
+        </button>
+        <button id="exportBtn" class="btn btn-outline btn-icon" title="匯出日誌資料">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>匯出備份</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-main">
+    
+    <!-- Top Navigation Tabs -->
+    <nav class="main-nav">
+      <button class="nav-tab active" data-tab="workout">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v8H2zM6 8v8M14 8v8"/></svg>
+        <span>今日運動日誌</span>
+      </button>
+      <button class="nav-tab" data-tab="history">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+        <span>歷史與人體熱點圖</span>
+      </button>
+      <button class="nav-tab" data-tab="plan">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>課表與週排程藍圖</span>
+      </button>
+      <button class="nav-tab" data-tab="guide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>壁球與重訓指引</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: WORKOUT LOG (DEFAULT) -->
+    <section id="tab-workout" class="tab-pane active">
+      
+      <!-- Session Bar -->
+      <div class="session-header-card glass-panel">
+        <div class="session-meta">
+          <div class="day-switcher">
+            <button class="day-pill active" data-day="upper">
+              <span class="day-icon">👕</span>
+              <div>
+                <strong>Day 1 : 上半身訓練 (週二)</strong>
+                <small class="day-sub">胸、背、肩、手臂、上肢核心</small>
+              </div>
+            </button>
+            <button class="day-pill" data-day="lower">
+              <span class="day-icon">👖</span>
+              <div>
+                <strong>Day 2 : 下半身訓練 (週四)</strong>
+                <small class="day-sub">臀、腿、小腿、核心與下肢鏈</small>
+              </div>
+            </button>
+            <button class="day-pill squash-pill" data-day="squash">
+              <span class="day-icon">🏸</span>
+              <div>
+                <strong>週末壁球 (週六/日)</strong>
+                <small class="day-sub">60 分鐘心肺爆發與敏捷打卡</small>
+              </div>
+            </button>
+          </div>
+
+          <div class="session-info-stats" id="strengthStatsBar">
+            <div class="stat-badge">
+              <span class="stat-title">建議時間</span>
+              <span class="stat-value">45 ~ 55 分鐘</span>
+            </div>
+            <div class="stat-badge">
+              <span class="stat-title">目標組數</span>
+              <span class="stat-value" id="totalSetsDisplay">15 組</span>
+            </div>
+            <div class="stat-badge highlight">
+              <span class="stat-title">已完成組數</span>
+              <span class="stat-value" id="completedSetsCount">0 組</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rest Timer Widget Inline (Only for strength days) -->
+        <div class="rest-timer-widget" id="restTimerWidget">
+          <div class="timer-display">
+            <span class="timer-label">組間休息計時</span>
+            <div class="timer-digits" id="timerDigits">00:00</div>
+          </div>
+          <div class="timer-quick-btn-group">
+            <button class="timer-btn" data-sec="30">30s</button>
+            <button class="timer-btn" data-sec="60">60s</button>
+            <button class="timer-btn active" data-sec="90">90s</button>
+            <button class="timer-btn" data-sec="120">120s</button>
+          </div>
+          <div class="timer-action-group">
+            <button id="timerToggleBtn" class="btn btn-primary btn-sm">開始休息</button>
+            <button id="timerResetBtn" class="btn btn-outline btn-sm">重設</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workout Exercises List Container (For Strength Days) -->
+      <div class="workout-content-grid" id="strengthWorkoutGrid">
+        <div class="exercises-container" id="exercisesList">
+          <!-- Dynamic Exercise Cards injected by app.js -->
+        </div>
+
+        <!-- Sidebar / Floating Summary Card -->
+        <aside class="workout-sidebar">
+          <div class="glass-panel summary-panel">
+            <h3>📝 今日重訓日誌總結</h3>
+            
+            <div class="form-group">
+              <label for="workoutDate">訓練日期</label>
+              <input type="date" id="workoutDate" class="input-field">
+            </div>
+
+            <div class="form-group">
+              <label for="sessionRpe">整體自覺強度 (RPE 1-10)</label>
+              <div class="rpe-slider-wrapper">
+                <input type="range" id="sessionRpe" min="1" max="10" value="7" class="slider">
+                <span class="rpe-indicator" id="sessionRpeValue">RPE 7 (中高強度，還能做2~3下)</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sessionMood">今日體能狀況與感受</label>
+              <div class="mood-chips" id="moodChips">
+                <button type="button" class="mood-chip active" data-mood="🔥 狀態極佳">🔥 極佳</button>
+                <button type="button" class="mood-chip" data-mood="⚡ 正常發揮">⚡ 正常</button>
+                <button type="button" class="mood-chip" data-mood="🥱 略顯疲倦">🥱 略倦</button>
+                <button type="button" class="mood-chip" data-mood="🩹 關節酸軟">🩹 酸軟</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sessionNotes">訓練筆記 / 突破備註</label>
+              <textarea id="sessionNotes" rows="3" class="input-field" placeholder="記錄今日重量感受、姿勢調整心得、飲食睡眠狀況..."></textarea>
+            </div>
+
+            <div class="summary-actions">
+              <button id="saveSessionBtn" class="btn btn-primary btn-block btn-lg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                <span>儲存並完成今日打卡</span>
+              </button>
+              <button id="resetSessionBtn" class="btn btn-outline btn-block">清空當前填寫</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- SQUASH WORKOUT VIEW (Hidden by default, shown when day === 'squash') -->
+      <div id="squashWorkoutView" class="squash-view-container glass-panel hidden">
+        <div class="squash-banner">
+          <div class="squash-header-content">
+            <span class="squash-badge">🏸 週末高強度心肺 & 敏捷</span>
+            <h2>1 小時壁球運動打卡 (Squash Session)</h2>
+            <p>壁球能帶來極佳的心肺刺激、快速變向反應與單腳衝刺爆發力。打卡後將自動同步至人體肌肉熱點圖（點亮臀腿後側鏈、小腿、核心與心肺）。</p>
+          </div>
+          <div class="squash-stat-box">
+            <span class="squash-stat-num">~650</span>
+            <span class="squash-stat-label">預估燃燒大卡 (kcal/hr)</span>
+          </div>
+        </div>
+
+        <div class="squash-form-grid">
+          <div class="glass-panel squash-form-card">
+            <h3>⏱️ 運動時間與強度</h3>
+            
+            <div class="form-group">
+              <label for="squashDate">打球日期</label>
+              <input type="date" id="squashDate" class="input-field">
+            </div>
+
+            <div class="form-group">
+              <label for="squashDuration">運動時長 (分鐘)</label>
+              <input type="number" id="squashDuration" class="input-field" value="60" min="15" step="5">
+            </div>
+
+            <div class="form-group">
+              <label for="squashRpe">自覺強度 (RPE 1-10)</label>
+              <div class="rpe-slider-wrapper">
+                <input type="range" id="squashRpe" min="1" max="10" value="8" class="slider">
+                <span class="rpe-indicator" id="squashRpeValue">RPE 8 (高強度心肺，呼吸急促汗流浹背)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-panel squash-form-card">
+            <h3>📋 狀態與防護備忘</h3>
+
+            <div class="form-group">
+              <label>關節與肌肉狀態 (膝/踝/肩)</label>
+              <div class="mood-chips" id="squashJointStatus">
+                <button type="button" class="mood-chip active" data-val="✨ 關節良好">✨ 良好無痛</button>
+                <button type="button" class="mood-chip" data-val="⚡ 腿部微酸">⚡ 腿部微酸</button>
+                <button type="button" class="mood-chip" data-val="🩹 膝踝緊繃">🩹 膝踝緊繃</button>
+                <button type="button" class="mood-chip" data-val="⚠️ 需多拉筋">⚠️ 需多拉筋</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="squashNotes">打球筆記 / 比賽心得</label>
+              <textarea id="squashNotes" rows="3" class="input-field" placeholder="記錄今日擊球手感、步法移動流暢度、戰術收穫..."></textarea>
+            </div>
+
+            <button id="saveSquashBtn" class="btn btn-primary btn-block btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              <span>儲存壁球打卡並更新熱點圖</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: HISTORY & ANATOMICAL HEATMAP -->
+    <section id="tab-history" class="tab-pane">
+      
+      <!-- Top Stats Counter -->
+      <div class="history-overview-grid">
+        <div class="glass-panel stat-card">
+          <span class="stat-num" id="statTotalWorkouts">0</span>
+          <span class="stat-desc">累計訓練次數 (重訓+壁球)</span>
+        </div>
+        <div class="glass-panel stat-card">
+          <span class="stat-num" id="statTotalVolume">0 kg</span>
+          <span class="stat-desc">累計訓練總容量 (Volume)</span>
+        </div>
+        <div class="glass-panel stat-card">
+          <span class="stat-num" id="statSquashHours">0 小時</span>
+          <span class="stat-desc">累計壁球心肺時數</span>
+        </div>
+        <div class="glass-panel stat-card">
+          <span class="stat-num" id="statCurrentStreak">0 週</span>
+          <span class="stat-desc">持續週數打卡</span>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE MUSCLE HEATMAP SECTION -->
+      <div class="heatmap-container-card glass-panel">
+        <div class="heatmap-header">
+          <div>
+            <h3>🔥 身體人體肌肉熱點圖 (Muscle Heatmap)</h3>
+            <p class="heatmap-subtitle">根據歷史訓練組數與壁球運動，即時渲染各肌群刺激熱度（點擊各部位可查看明細）</p>
+          </div>
+          
+          <!-- Heatmap Time Range Filter -->
+          <div class="heatmap-controls">
+            <div class="time-filter-group" id="heatmapTimeFilter">
+              <button class="time-btn" data-range="7">近 7 天</button>
+              <button class="time-btn active" data-range="30">近 30 天</button>
+              <button class="time-btn" data-range="all">全部歷史</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="heatmap-layout-grid">
+          
+          <!-- SVG Anatomical Views (Front & Back) -->
+          <div class="heatmap-visual-wrapper">
+            
+            <!-- Front View Silhouette -->
+            <div class="body-view-box">
+              <span class="view-label">正面 (Anterior)</span>
+              <svg id="svgFront" class="anatomical-svg" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg">
+                <!-- Head & Neck -->
+                <circle cx="100" cy="35" r="22" class="body-base" />
+                <path d="M92 57 L108 57 L108 72 L92 72 Z" class="body-base" />
+                
+                <!-- Shoulders Front -->
+                <path id="muscle_delts_front_l" data-muscle="delts" class="muscle-node heat-none" d="M68 76 C62 78 52 88 50 102 C58 106 68 96 72 82 Z" title="三角肌前束 (Front Delts)" />
+                <path id="muscle_delts_front_r" data-muscle="delts" class="muscle-node heat-none" d="M132 76 C138 78 148 88 150 102 C142 106 132 96 128 82 Z" title="三角肌前束 (Front Delts)" />
+                
+                <!-- Chest (Pectorals) -->
+                <path id="muscle_chest_l" data-muscle="chest" class="muscle-node heat-none" d="M74 80 C84 80 97 86 97 106 C85 110 70 102 68 88 Z" title="胸大肌左 (Chest)" />
+                <path id="muscle_chest_r" data-muscle="chest" class="muscle-node heat-none" d="M126 80 C116 80 103 86 103 106 C115 110 130 102 132 88 Z" title="胸大肌右 (Chest)" />
+                
+                <!-- Biceps (Upper Arms) -->
+                <path id="muscle_biceps_l" data-muscle="biceps" class="muscle-node heat-none" d="M48 106 C46 120 48 136 56 142 C60 138 64 122 62 108 Z" title="肱二頭肌 (Biceps)" />
+                <path id="muscle_biceps_r" data-muscle="biceps" class="muscle-node heat-none" d="M152 106 C154 120 152 136 144 142 C140 138 136 122 138 108 Z" title="肱二頭肌 (Biceps)" />
+                
+                <!-- Forearms Front -->
+                <path id="muscle_forearms_l" data-muscle="forearms" class="muscle-node heat-none" d="M54 146 C50 162 48 182 52 195 C56 195 62 178 62 150 Z" />
+                <path id="muscle_forearms_r" data-muscle="forearms" class="muscle-node heat-none" d="M146 146 C150 162 152 182 148 195 C144 195 138 178 138 150 Z" />
+
+                <!-- Abs / Core -->
+                <path id="muscle_abs" data-muscle="abs" class="muscle-node heat-none" d="M78 114 C86 112 114 112 122 114 C122 156 118 168 114 172 C104 174 96 174 86 172 C82 168 78 156 78 114 Z" title="腹直肌與核心 (Abs)" />
+                
+                <!-- Quads (Front Thighs) -->
+                <path id="muscle_quads_l" data-muscle="quads" class="muscle-node heat-none" d="M72 178 C80 176 96 182 96 210 C96 238 92 266 84 274 C76 270 68 238 68 206 Z" title="股四頭肌 (Quads)" />
+                <path id="muscle_quads_r" data-muscle="quads" class="muscle-node heat-none" d="M128 178 C120 176 104 182 104 210 C104 238 108 266 116 274 C124 270 132 238 132 206 Z" title="股四頭肌 (Quads)" />
+                
+                <!-- Knees / Tibialis / Calves Front -->
+                <path id="muscle_calves_fl" data-muscle="calves" class="muscle-node heat-none" d="M72 284 C84 286 86 312 84 346 C76 348 70 330 68 300 Z" title="小腿前側/腓腸 (Calves)" />
+                <path id="muscle_calves_fr" data-muscle="calves" class="muscle-node heat-none" d="M128 284 C116 286 114 312 116 346 C124 348 130 330 132 300 Z" title="小腿前側/腓腸 (Calves)" />
+              </svg>
+            </div>
+
+            <!-- Back View Silhouette -->
+            <div class="body-view-box">
+              <span class="view-label">背面 (Posterior)</span>
+              <svg id="svgBack" class="anatomical-svg" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg">
+                <!-- Head & Neck -->
+                <circle cx="100" cy="35" r="22" class="body-base" />
+                <path d="M92 57 L108 57 L108 72 L92 72 Z" class="body-base" />
+                
+                <!-- Traps / Upper Back -->
+                <path id="muscle_traps" data-muscle="back" class="muscle-node heat-none" d="M82 66 L118 66 L128 88 L100 108 L72 88 Z" title="斜方肌/上背 (Traps & Upper Back)" />
+                
+                <!-- Rear Delts -->
+                <path id="muscle_delts_rear_l" data-muscle="delts" class="muscle-node heat-none" d="M68 76 C62 78 52 88 50 102 C58 106 68 96 72 82 Z" />
+                <path id="muscle_delts_rear_r" data-muscle="delts" class="muscle-node heat-none" d="M132 76 C138 78 148 88 150 102 C142 106 132 96 128 82 Z" />
+                
+                <!-- Triceps -->
+                <path id="muscle_triceps_l" data-muscle="triceps" class="muscle-node heat-none" d="M48 106 C46 122 48 138 56 144 C60 140 64 124 62 108 Z" title="肱三頭肌 (Triceps)" />
+                <path id="muscle_triceps_r" data-muscle="triceps" class="muscle-node heat-none" d="M152 106 C154 122 152 138 144 144 C140 140 136 124 138 108 Z" title="肱三頭肌 (Triceps)" />
+                
+                <!-- Lats (Back) -->
+                <path id="muscle_lats_l" data-muscle="back" class="muscle-node heat-none" d="M72 92 C80 96 96 112 96 142 C82 142 70 128 66 106 Z" title="背闊肌 (Lats)" />
+                <path id="muscle_lats_r" data-muscle="back" class="muscle-node heat-none" d="M128 92 C120 96 104 112 104 142 C118 142 130 128 134 106 Z" title="背闊肌 (Lats)" />
+                
+                <!-- Lower Back -->
+                <path id="muscle_lower_back" data-muscle="lower_back" class="muscle-node heat-none" d="M84 140 C94 140 106 140 116 140 C114 162 108 168 100 168 C92 168 86 162 84 140 Z" title="下背/豎脊肌 (Lower Back)" />
+
+                <!-- Glutes (Buttocks) -->
+                <path id="muscle_glutes_l" data-muscle="glutes" class="muscle-node heat-none" d="M70 172 C82 168 98 172 98 200 C86 212 70 208 68 184 Z" title="臀大肌 (Glutes)" />
+                <path id="muscle_glutes_r" data-muscle="glutes" class="muscle-node heat-none" d="M130 172 C118 168 102 172 102 200 C114 212 130 208 132 184 Z" title="臀大肌 (Glutes)" />
+                
+                <!-- Hamstrings (Back Thighs) -->
+                <path id="muscle_hamstrings_l" data-muscle="hamstrings" class="muscle-node heat-none" d="M70 208 C84 212 96 210 94 246 C92 268 84 274 76 272 C70 256 68 232 70 208 Z" title="膕繩肌/大腿後側 (Hamstrings)" />
+                <path id="muscle_hamstrings_r" data-muscle="hamstrings" class="muscle-node heat-none" d="M130 208 C116 212 104 210 106 246 C108 268 116 274 124 272 C130 256 132 232 130 208 Z" title="膕繩肌/大腿後側 (Hamstrings)" />
+                
+                <!-- Calves Back -->
+                <path id="muscle_calves_bl" data-muscle="calves" class="muscle-node heat-none" d="M72 284 C86 286 86 312 84 346 C76 348 68 330 68 300 Z" title="小腿後側 (Calves)" />
+                <path id="muscle_calves_br" data-muscle="calves" class="muscle-node heat-none" d="M128 284 C114 286 114 312 116 346 C124 348 132 330 132 300 Z" title="小腿後側 (Calves)" />
+              </svg>
+            </div>
+
+          </div>
+
+          <!-- Heatmap Legend & Muscle Details Card -->
+          <div class="heatmap-info-panel">
+            
+            <!-- Heat Color Legend -->
+            <div class="heat-legend-box">
+              <span class="legend-title">熱力分級指標：</span>
+              <div class="legend-scale">
+                <div class="scale-item"><span class="color-dot heat-none-dot"></span>0組 (未刺激)</div>
+                <div class="scale-item"><span class="color-dot heat-low-dot"></span>1-4組 (輕度適應)</div>
+                <div class="scale-item"><span class="color-dot heat-mid-dot"></span>5-9組 (主要受力)</div>
+                <div class="scale-item"><span class="color-dot heat-high-dot"></span>10+組 (高強度聚焦)</div>
+              </div>
+            </div>
+
+            <!-- Dynamic Selected Muscle Card -->
+            <div class="muscle-detail-card glass-panel" id="muscleDetailCard">
+              <div class="muscle-detail-header">
+                <h4 id="selectedMuscleName">點選任意肌肉部位</h4>
+                <span class="badge-tag" id="selectedMuscleTag">請點選人體圖</span>
+              </div>
+              <div class="muscle-stats-row">
+                <div class="m-stat">
+                  <span class="m-stat-label">累計有效組數</span>
+                  <span class="m-stat-val" id="selectedMuscleSets">0 組</span>
+                </div>
+                <div class="m-stat">
+                  <span class="m-stat-label">總訓練容量</span>
+                  <span class="m-stat-val" id="selectedMuscleVolume">0 kg</span>
+                </div>
+              </div>
+              <div class="muscle-exercises-box">
+                <h5>🏋️ 該部位參與訓練動作：</h5>
+                <ul id="selectedMuscleExercises" class="muscle-ex-list">
+                  <li class="empty-hint">在左側人體圖點擊肌肉部位查看詳細鍛鍊紀錄</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Muscle Balance Summary -->
+            <div class="balance-summary-box glass-panel">
+              <h4>⚖️ 上下肢與壁球平衡度分析</h4>
+              <div class="balance-bars">
+                <div class="bar-group">
+                  <div class="bar-label"><span>上半身 (Upper Body)</span><span id="upperPct">0%</span></div>
+                  <div class="progress-track"><div class="progress-fill upper" id="upperBar" style="width:0%"></div></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar-label"><span>下半身 (Lower Body)</span><span id="lowerPct">0%</span></div>
+                  <div class="progress-track"><div class="progress-fill lower" id="lowerBar" style="width:0%"></div></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar-label"><span>壁球心肺爆發 (Squash)</span><span id="squashPct">0%</span></div>
+                  <div class="progress-track"><div class="progress-fill squash" id="squashBar" style="width:0%"></div></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- History List Section -->
+      <div class="history-list-section glass-panel">
+        <div class="history-header">
+          <h3>📋 歷史訓練打卡清單</h3>
+          <button id="clearHistoryBtn" class="btn btn-sm btn-outline text-danger">清空所有紀錄</button>
+        </div>
+        <div id="historyLogsContainer" class="history-items-list">
+          <div class="empty-state">尚無訓練紀錄，快去完成今天的第一場訓練吧！💪</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 3: PROGRESSION PLAN & CURRICULUM -->
+    <section id="tab-plan" class="tab-pane">
+      <div class="plan-header-banner glass-panel">
+        <div class="banner-text">
+          <h2>🎯 12 週漸進式訓練課表 ＆ 週末壁球排程</h2>
+          <p>專為「週二上半身、週四下半身、週末壁球、每日散步」設計的黃金週期。在下半身重訓與壁球間保留 48~72 小時完整關節修復期，預防運動傷害並維持巔峰爆發力！</p>
+        </div>
+        <div class="banner-badge">
+          <span>重訓：2天/週</span>
+          <span>壁球：週末1次</span>
+        </div>
+      </div>
+
+      <div class="phase-cards-grid">
+        <!-- Phase 1 Card -->
+        <div class="phase-card glass-panel" id="phaseCard1">
+          <div class="phase-card-header">
+            <span class="phase-tag beginner">Phase 1 : 初級入門適應期</span>
+            <span class="week-span">第 1 ~ 4 週</span>
+          </div>
+          <h3>動作軌跡與關節韌帶適應</h3>
+          <p class="phase-desc">以「自重動作 + 輕啞鈴」建立本體感覺與肩胛/髖部動作控制，搭配週末 1 小時壁球建立心肺與下肢敏捷。</p>
+          <div class="phase-plan-preview">
+            <div class="split-column">
+              <h4>👕 週二 : 上半身 (Day 1)</h4>
+              <ul>
+                <li><strong>跪姿/標準伏地挺身 (Push-up)</strong> 3組 × 8-12次</li>
+                <li><strong>俯身雙臂啞鈴划船 (Bent-over Row)</strong> 3組 × 10-12次</li>
+                <li><strong>坐姿啞鈴肩推 (Shoulder Press)</strong> 3組 × 10-12次</li>
+                <li><strong>啞鈴側平舉 (Lateral Raise)</strong> 3組 × 12-15次</li>
+                <li><strong>死蟲式核心穩定 (Dead Bug)</strong> 3組 × 12次</li>
+              </ul>
+            </div>
+            <div class="split-column">
+              <h4>👖 週四 : 下半身 (Day 2)</h4>
+              <ul>
+                <li><strong>自重/酒杯深蹲 (Goblet Squat)</strong> 3組 × 10-15次</li>
+                <li><strong>啞鈴羅馬尼亞硬舉 (RDL)</strong> 3組 × 10-12次</li>
+                <li><strong>啞鈴/自重弓箭步 (Lunge)</strong> 3組 × 每邊 10次</li>
+                <li><strong>自重臀橋 (Glute Bridge)</strong> 3組 × 12-15次</li>
+                <li><strong>站姿提踵 (Standing Calf Raise)</strong> 3組 × 15-20次</li>
+              </ul>
+            </div>
+            <div class="split-column squash-column">
+              <h4>🏸 週六/日 : 週末壁球 (Squash)</h4>
+              <ul>
+                <li><strong>1 小時壁球有氧爆發</strong> (RPE 7-8，注意腳踝熱身)</li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-block select-phase-btn" data-target-phase="1">載入此階段訓練</button>
+        </div>
+
+        <!-- Phase 2 Card -->
+        <div class="phase-card glass-panel" id="phaseCard2">
+          <div class="phase-card-header">
+            <span class="phase-tag intermediate">Phase 2 : 中級肌力建立期</span>
+            <span class="week-span">第 5 ~ 8 週</span>
+          </div>
+          <h3>漸進超負荷與阻力提升</h3>
+          <p class="phase-desc">增加負重強度，著重離心控制（2~3秒下放），強化單腿平衡力量以直接提升壁球場上變向煞車能力。</p>
+          <div class="phase-plan-preview">
+            <div class="split-column">
+              <h4>👕 週二 : 上半身</h4>
+              <ul>
+                <li><strong>啞鈴平躺臥推 (Dumbbell Bench Press)</strong> 4組 × 8-10次</li>
+                <li><strong>單臂啞鈴划船 (One-arm Row)</strong> 4組 × 8-10次</li>
+                <li><strong>阿諾啞鈴肩推 (Arnold Press)</strong> 3組 × 10-12次</li>
+                <li><strong>啞鈴二頭彎舉 (Bicep Curl)</strong> 3組 × 10-12次</li>
+                <li><strong>長凳臂屈伸 (Bench Dip)</strong> 3組 × 10-12次</li>
+              </ul>
+            </div>
+            <div class="split-column">
+              <h4>👖 週四 : 下半身</h4>
+              <ul>
+                <li><strong>負重酒杯深蹲 (Goblet Squat)</strong> 4組 × 8-10次</li>
+                <li><strong>雙手啞鈴硬舉 (Dumbbell Deadlift)</strong> 4組 × 8-10次</li>
+                <li><strong>保加利亞分腿蹲 (Bulgarian Split Squat)</strong> 3組 × 每邊 8-10次</li>
+                <li><strong>啞鈴負重提踵 (Calf Raise)</strong> 3組 × 12-15次</li>
+                <li><strong>側平板支撐 (Side Plank)</strong> 3組 × 每邊 30秒</li>
+              </ul>
+            </div>
+            <div class="split-column squash-column">
+              <h4>🏸 週六/日 : 週末壁球 (Squash)</h4>
+              <ul>
+                <li><strong>1 小時壁球競賽節奏</strong> (結合單腳弓步煞車衝刺)</li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-block select-phase-btn" data-target-phase="2">載入此階段訓練</button>
+        </div>
+
+        <!-- Phase 3 Card -->
+        <div class="phase-card glass-panel" id="phaseCard3">
+          <div class="phase-card-header">
+            <span class="phase-tag advanced">Phase 3 : 強化突破期</span>
+            <span class="week-span">第 9 ~ 12 週</span>
+          </div>
+          <h3>多關節複合發力與肌肥大刺激</h3>
+          <p class="phase-desc">引入槓鈴/大重量複合訓練，雕塑體態並打造強大肌力儲備與競技體能。</p>
+          <div class="phase-plan-preview">
+            <div class="split-column">
+              <h4>👕 週二 : 上半身</h4>
+              <ul>
+                <li><strong>槓鈴/重啞鈴臥推 (Barbell Bench Press)</strong> 4組 × 6-8次</li>
+                <li><strong>引體向上 / 滑輪下拉 (Pull-up / Lat Pulldown)</strong> 4組 × 8-10次</li>
+                <li><strong>槓鈴/啞鈴俯身划船 (Bent-over Row)</strong> 4組 × 8-10次</li>
+                <li><strong>站姿肩推 (Overhead Press)</strong> 3組 × 8-10次</li>
+                <li><strong>側平舉 + 懸垂舉腿 (Lateral Raise + Leg Raise)</strong> 3組 × 12次</li>
+              </ul>
+            </div>
+            <div class="split-column">
+              <h4>👖 週四 : 下半身</h4>
+              <ul>
+                <li><strong>槓鈴/負重深蹲 (Barbell Squat)</strong> 4組 × 6-8次</li>
+                <li><strong>傳統槓鈴硬舉 (Barbell Deadlift)</strong> 4組 × 5-8次</li>
+                <li><strong>負重行進弓步蹲 (Walking Lunge)</strong> 3組 × 12步</li>
+                <li><strong>負重臀橋 (Barbell Glute Bridge)</strong> 3組 × 10-12次</li>
+                <li><strong>俄羅斯轉體 (Russian Twist)</strong> 3組 × 15次</li>
+              </ul>
+            </div>
+            <div class="split-column squash-column">
+              <h4>🏸 週六/日 : 週末壁球 (Squash)</h4>
+              <ul>
+                <li><strong>1 小時高強度對打</strong> (展現深厚腿力與核心穩定)</li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-block select-phase-btn" data-target-phase="3">載入此階段訓練</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: SQUASH & STRENGTH GUIDE -->
+    <section id="tab-guide" class="tab-pane">
+      <div class="guide-content glass-panel">
+        <h2>📖 壁球 (Squash) 與重訓的完美互補秘訣</h2>
+        
+        <div class="guide-grid">
+          <div class="guide-box">
+            <div class="guide-icon">📅</div>
+            <h3>為什麼將下半身排在週四、壁球排在週末？</h3>
+            <p>壁球需要大量單腳急速煞車、側向下蹲與衝刺，對膝蓋髕骨肌腱與腳踝負擔極大。週四練腿後，週五充分休息，到週六/日早上有 **48~72 小時充足修復期**，能徹底避免下肢過度疲勞導致扭傷。</p>
+          </div>
+
+          <div class="guide-box">
+            <div class="guide-icon">🏸</div>
+            <h3>重訓如何強化壁球表現？</h3>
+            <p>
+              • <strong>酒杯深蹲/分腿蹲</strong>：增強網前跨步煞車力量，救球更穩。<br>
+              • <strong>硬舉與臀橋</strong>：強化臀大肌爆發力，啟動步伐更快。<br>
+              • <strong>肩推與划船</strong>：穩定肩袖肌群，保護揮拍手臂不拉傷。
+            </p>
+          </div>
+
+          <div class="guide-box">
+            <div class="guide-icon">🚶</div>
+            <h3>日常散步的角色</h3>
+            <p>日常散步（透過 iPhone 健康 App 紀錄）屬於低強度非運動消耗 (NEAT)，能促進全身血液循環，加速重訓與壁球後的乳酸代謝與肌肉放鬆，是最理想的主動恢復。</p>
+          </div>
+
+          <div class="guide-box">
+            <div class="guide-icon">📈</div>
+            <h3>重訓如何「循序漸進晉級」？</h3>
+            <p>每過 1~2 週採用<strong>雙進法</strong>：當某個動作每組都能輕鬆做滿目標次數（例如 12 下，RPE ≤ 7），下週就微增 5%~10% 重量，逐步打下深厚力量。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Exercise Detail Modal -->
+  <div id="exerciseModal" class="modal-overlay hidden">
+    <div class="modal-dialog glass-panel">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise Library Search Modal -->
+  <div id="libraryModal" class="modal-overlay hidden">
+    <div class="modal-dialog glass-panel modal-lg">
+      <button class="modal-close-btn" id="libraryCloseBtn">&times;</button>
+      <div class="library-header">
+        <h2>💪 1,324+ 全動作庫即時檢索</h2>
+        <div class="library-search-bar">
+          <input type="text" id="librarySearchInput" class="input-field" placeholder="搜尋動作名稱、肌群 (如 chest, squat, lunge, 臥推...)">
+          <select id="bodyPartFilter" class="input-field select-field">
+            <option value="all">所有部位 (All)</option>
+            <option value="chest">胸部 (Chest)</option>
+            <option value="back">背部 (Back)</option>
+            <option value="shoulders">肩膀 (Shoulders)</option>
+            <option value="upper arms">手臂 (Upper Arms)</option>
+            <option value="upper legs">大腿/臀部 (Upper Legs)</option>
+            <option value="lower legs">小腿 (Lower Legs)</option>
+            <option value="waist">核心/腰腹 (Waist)</option>
+          </select>
+        </div>
+      </div>
+      <div class="library-grid" id="libraryGrid">
+        <!-- Injected items -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Load Database, Supabase SDK and Application Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="exercises_db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
