@@ -556,6 +556,550 @@
     }
   };
 
+  // --- 58+ ZERO-EQUIPMENT MOBILITY & STRETCHING DATABASE ---
+  const MOBILITY_EXERCISES_DB = [
+    // 1. 髖關節與臀部開髖 (16 動作)
+    {
+      id: '1604',
+      name: 'World’s Greatest Stretch (世界上最偉大的伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '胸椎旋轉 / 髖屈肌 / 臀肌 / 膕繩肌',
+      holdSeconds: 40,
+      notes: '深弓步下沉，同側手肘向下貼近地面，接著向天空打開胸椎並旋轉抬手臂。全方位打開活動度！'
+    },
+    {
+      id: '2567',
+      name: 'Seated Piriformis Stretch (坐姿梨狀肌與髖關節開髖)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀肌 / 梨狀肌 / 髖關節囊',
+      holdSeconds: 35,
+      notes: '坐於地面或椅子將一腳跨在對側膝上，背部打直前傾，感受深層臀肌與梨狀肌展開。改善深蹲下不去與骨盆卡卡。'
+    },
+    {
+      id: '1494',
+      name: 'Butterfly Yoga Pose (蝴蝶式骨盆開髖伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀大肌 / 內收肌群 / 骨盆底',
+      holdSeconds: 40,
+      notes: '坐姿雙腳腳掌相對併攏，雙手抱腳，雙膝向下沉並緩慢前傾，深層釋放大腿內側與髖部緊繃。'
+    },
+    {
+      id: '2571',
+      name: 'Rocking Frog Stretch (蛙式前後搖擺深層開髖)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '大腿內收肌群 / 髖臼深層靈活度',
+      holdSeconds: 45,
+      notes: '雙膝大跨度分開跪地，雙腳內側貼地，小臂撐地後前後搖擺，慢慢將臀部向後推。極佳釋放大跨步救球緊繃。'
+    },
+    {
+      id: '1424',
+      name: 'Seated Glute Stretch (仰臥/坐姿臀肌深層放鬆)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀大肌 / 坐骨神經通道',
+      holdSeconds: 35,
+      notes: '雙手抱住膝蓋拉向胸前，感受臀大肌深層牽拉。有效緩解壁球深跨步救球後的臀部酸緊。'
+    },
+    {
+      id: '3013',
+      name: 'Low Glute Bridge Stretch (自重臀橋與髖部伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀大肌 / 髖關節前側',
+      holdSeconds: 30,
+      notes: '雙腳踩地頂起髖部，頂峰收緊臀部並舒展大腿前側與骨盆。'
+    },
+    {
+      id: '3645',
+      name: 'Single Leg Bridge with Outstretched Leg (單腿伸展臀橋)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀肌 / 骨盆穩定鏈',
+      holdSeconds: 30,
+      notes: '一腿伸直，單側發力頂起髖部，加強骨盆左右平衡。'
+    },
+    {
+      id: '1466',
+      name: 'Twist Hip Lift (轉體髖部挺伸流動)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀大肌 / 腹斜肌 / 髖關節',
+      holdSeconds: 30,
+      notes: '仰臥轉動骨盆向上抬起，釋放骨盆旋轉緊繃感。'
+    },
+    {
+      id: '1422',
+      name: 'Pelvic Tilt into Bridge (骨盆後傾銜接臀橋)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '下背豎脊肌 / 骨盆底肌群',
+      holdSeconds: 35,
+      notes: '先將下背壓平地面使骨盆後傾，再順勢頂起臀部，是放鬆下背疼痛的黃金動作。'
+    },
+    {
+      id: '1774',
+      name: 'Side Bridge Hip Abduction (側橋髖外展伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀中肌 / 髖外展肌群',
+      holdSeconds: 30,
+      notes: '側身撐起並抬起上方腿，活化並伸展臀中肌，增強單腿落地煞車穩定。'
+    },
+    {
+      id: '3561',
+      name: 'Glute Bridge March (臀橋交替踏步伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀肌 / 髖屈肌 / 膕繩肌',
+      holdSeconds: 35,
+      notes: '維持臀橋高度，雙腿輪流微抬踏步，動態放鬆腰臀交界處。'
+    },
+    {
+      id: '3523',
+      name: 'Glute Bridge Two Legs on Bench (長凳高位臀橋伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀大肌 / 髖關節全範圍伸展',
+      holdSeconds: 35,
+      notes: '雙腳墊高於長凳或沙發，大幅度伸展髖關節前側與收緊臀肌。'
+    },
+    {
+      id: '0668',
+      name: 'Rear Decline Bridge (俯臥下斜背橋伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀肌 / 膕繩肌 / 下背',
+      holdSeconds: 30,
+      notes: '反向支撐打開前側軀幹，伸展髖部與胸肩。'
+    },
+    {
+      id: '3214',
+      name: 'Arms Apart Circular Toe Touch (雙臂分開圓周觸腳伸展)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀大肌 / 膕繩肌 / 側髖',
+      holdSeconds: 35,
+      notes: '雙臂平展，身體向斜下方旋轉觸碰對側腳尖，全方位拉伸臀腿後側鏈。'
+    },
+    {
+      id: '3212',
+      name: 'Basic Toe Touch (基礎直腿屈體觸腳尖)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '臀肌 / 膕繩肌 / 豎脊肌',
+      holdSeconds: 30,
+      notes: '雙腿併攏微屈膝前屈下沉，深層放鬆大腿後側與臀大肌。'
+    },
+    {
+      id: '1460',
+      name: 'Walking Lunge Stretch (行進低弓步深層開髖)',
+      cat: 'hip_glutes',
+      catName: '🦵 髖關節與臀部',
+      target: '髂腰肌 / 臀大肌 / 股四頭肌',
+      holdSeconds: 35,
+      notes: '大步向前跨出，骨盆下沉感受後腿髖屈肌深層拉伸。'
+    },
+
+    // 2. 胸部、肩膀與手臂 (12 動作)
+    {
+      id: '1271',
+      name: 'Chest & Front Shoulder Stretch (門框/牆壁胸大肌深層拉伸)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '胸大肌 / 三角肌前束',
+      holdSeconds: 30,
+      notes: '小臂貼於門框或牆面，軀幹緩慢向前推進並微轉，感受胸肌與肩膀前側充分展開，舒緩久坐打電腦圓肩。'
+    },
+    {
+      id: '1167',
+      name: 'Dynamic Chest Stretch (動態擴胸展開伸展)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '胸大肌 / 菱形肌 / 前三角肌',
+      holdSeconds: 30,
+      notes: '雙臂向後水平打開展開胸腔，配合深呼吸，快速釋放胸背緊繃。'
+    },
+    {
+      id: '1405',
+      name: 'Back Pec Stretch (站姿胸大肌與上背拉伸)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '胸大肌 / 背闊肌 / 三角肌',
+      holdSeconds: 30,
+      notes: '手指交叉於身前或身後，緩慢向上向外延伸，感受胸背充分延展。'
+    },
+    {
+      id: '0669',
+      name: 'Rear Deltoid Stretch (三角肌後束與後肩拉伸)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '三角肌後束 / 菱形肌 / 旋轉袖',
+      holdSeconds: 30,
+      notes: '一手橫跨胸前，另一手將其壓向胸口，放鬆壁球頻繁擊球後的後肩肌群。'
+    },
+    {
+      id: '0643',
+      name: 'Overhead Triceps Stretch (過頭肱三頭肌拉伸)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '肱三頭肌 / 背闊肌上緣',
+      holdSeconds: 30,
+      notes: '手肘向上彎曲置於腦後，對側手輕壓手肘下沉，深層拉伸大臂後側。'
+    },
+    {
+      id: '0817',
+      name: 'Standing Triceps Stretch (站姿三頭肌延展)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '肱三頭肌 / 肩關節後側',
+      holdSeconds: 30,
+      notes: '挺胸直立，將大臂貼近耳朵向上拉伸，消除推舉與伏地挺身後的疲勞。'
+    },
+    {
+      id: '0721',
+      name: 'Side Wrist Pull Stretch (側向手腕牽引與前臂拉伸)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '前臂屈肌群 / 腕關節',
+      holdSeconds: 25,
+      notes: '手臂前伸手掌朝前，對側手輕拉指尖向身體，放鬆壁球握拍與打字滑鼠手。'
+    },
+    {
+      id: '1428',
+      name: 'Wrist Circles (手腕繞環關節靈活性)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '前臂旋前肌 / 腕韌帶',
+      holdSeconds: 30,
+      notes: '雙手十指相扣順時針與逆時針輕柔旋轉，增加揮拍手腕靈活度。'
+    },
+    {
+      id: '1403',
+      name: 'Neck Side Stretch (頸側斜方肌放鬆伸展)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '肩胛提肌 / 上斜方肌',
+      holdSeconds: 30,
+      notes: '一手置於身後，頭部緩慢倒向對側肩膀，釋放低頭用手機與聳肩壓力。'
+    },
+    {
+      id: '0716',
+      name: 'Side Push Neck Stretch (側推頸部深層放鬆)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '斜角肌 / 頸部肌群',
+      holdSeconds: 30,
+      notes: '手掌輕扶頭部側面微施壓拉伸，緩解肩頸僵硬。'
+    },
+    {
+      id: '1685',
+      name: 'Squat to Overhead Reach (深蹲過頭延伸舒展)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '胸椎活動度 / 三角肌 / 髖關節',
+      holdSeconds: 35,
+      notes: '下蹲同時雙臂高舉過頭，伸展胸椎與背闊肌。'
+    },
+    {
+      id: '1687',
+      name: 'Posterior Step to Overhead Reach (後退步過頭延展)',
+      cat: 'chest_shoulders',
+      catName: '👕 胸肩與手臂',
+      target: '腹直肌 / 背闊肌 / 髖屈肌',
+      holdSeconds: 35,
+      notes: '單腳後退跨步，雙臂向上向後延伸，全面舒展前側筋膜鏈。'
+    },
+
+    // 3. 脊椎、下背與核心旋轉 (13 動作)
+    {
+      id: '1363',
+      name: 'Spine Stretch (脊椎舒展與貓牛式放鬆)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '全脊椎 / 下背 / 背闊肌',
+      holdSeconds: 45,
+      notes: '緩慢拱背低頭與吸氣展胸，最後臀部坐向腳後跟放鬆雙臂前伸。釋放脊椎整週重訓與久坐壓力。'
+    },
+    {
+      id: '1346',
+      name: 'Kneeling Lat Stretch (跪姿背闊肌與側軀幹延展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '背闊肌 / 大圓肌 / 肩關節後側',
+      holdSeconds: 35,
+      notes: '跪姿雙臂向前延伸貼地，臀部向後下沉，讓背闊肌與側軀幹充分拉伸延長。'
+    },
+    {
+      id: '1419',
+      name: 'Iron Cross Spinal Twist (鐵十字式胸腰椎旋轉放鬆)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '胸大肌 / 髖屈肌 / 胸腰椎旋轉鏈',
+      holdSeconds: 35,
+      notes: '仰臥雙臂向兩側平展，一側腿抬起彎曲並跨過身體觸碰對側地面。極佳緩解旋轉打球後的脊椎壓力。'
+    },
+    {
+      id: '3639',
+      name: 'Bent Knee Lying Twist (仰臥雙屈膝轉體放鬆)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '腰椎豎脊肌 / 腹斜肌',
+      holdSeconds: 35,
+      notes: '雙膝彎曲併攏，平躺將雙膝倒向兩側，雙肩保持貼地，釋放腰椎壓力。'
+    },
+    {
+      id: '0690',
+      name: 'Seated Lower Back Stretch (坐姿下背放鬆伸展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '下背豎脊肌 / 背闊肌',
+      holdSeconds: 35,
+      notes: '坐姿雙腿分開，上半身向前向下放鬆下沉，深層舒展下背肌群。'
+    },
+    {
+      id: '0794',
+      name: 'Standing Lateral Stretch (站姿側體延展伸展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '腹內外斜肌 / 背闊肌 / 腰方肌',
+      holdSeconds: 30,
+      notes: '一手向上延伸，身體向對側側彎，拉長整條側腰與肋間肌。'
+    },
+    {
+      id: '1358',
+      name: 'Side Lying Floor Stretch (側臥地板背闊伸展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '背闊肌 / 上背 / 側肋',
+      holdSeconds: 35,
+      notes: '側臥於墊上，手臂向前上方延伸，感受背闊肌側向牽引。'
+    },
+    {
+      id: '1365',
+      name: 'Upper Back Stretch (上背與肩胛穿針式流動)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '胸椎靈活度 / 後肩 / 菱形肌',
+      holdSeconds: 40,
+      notes: '雙手抱肩或穿過腋下，呼氣時向天空打開旋轉。增加壁球上肢揮拍幅度。'
+    },
+    {
+      id: '1366',
+      name: 'Upward Facing Dog (上犬式脊椎舒展伸展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '腹直肌 / 脊椎前側 / 髖屈肌',
+      holdSeconds: 35,
+      notes: '雙手撐地推起上半身，胸部展開，伸展腹直肌與脊椎前側。'
+    },
+    {
+      id: '2329',
+      name: 'Spine Twist (坐姿脊椎扭轉伸展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '腹斜肌 / 胸椎旋轉靈活度',
+      holdSeconds: 35,
+      notes: '坐姿一腿跨過另一腿，手臂抵住膝蓋向後轉體，改善脊椎旋轉角度。'
+    },
+    {
+      id: '0464',
+      name: 'Front Plank with Twist (平板轉體伸展流動)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '深層核心 / 腹斜肌 / 腰椎',
+      holdSeconds: 30,
+      notes: '棒式支撐下緩慢將骨盆倒向兩側，動態釋放腰腹張力。'
+    },
+    {
+      id: '0002',
+      name: '45° Side Bend (45度側向側屈伸展)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '腹斜肌 / 腰方肌',
+      holdSeconds: 30,
+      notes: '站立順著大腿向下側滑，伸展對側側腰與腰方肌。'
+    },
+    {
+      id: '3231',
+      name: 'Two Toe Touch (雙向觸腳尖脊椎放鬆)',
+      cat: 'spine_back',
+      catName: '🧘 脊椎與核心',
+      target: '全背豎脊肌 / 膕繩肌',
+      holdSeconds: 30,
+      notes: '放鬆頭部與肩膀，雙手自然下垂觸碰腳尖，感受脊椎一節節拉長。'
+    },
+
+    // 4. 大腿前側 (股四頭) 與後側 (膕繩肌) (11 動作)
+    {
+      id: '0613',
+      name: 'Lying Side Quads Stretch (側臥股四頭肌與髖屈肌拉伸)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '髂腰肌 / 股直肌',
+      holdSeconds: 35,
+      notes: '側臥手握上方腳踝拉向臀部，骨盆微後傾保持穩定，深層拉伸大腿前側與髖屈肌。'
+    },
+    {
+      id: '1512',
+      name: 'All Fours Quad Stretch (四足跪姿髖屈肌與股四頭深度放鬆)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '髂腰肌 / 股直肌 / 骨盆前傾矯正',
+      holdSeconds: 45,
+      notes: '四足跪姿，向後抓住腳踝拉向臀部，軀幹微挺直。深層解鎖深蹲與大重量後的下背與髖屈緊繃！'
+    },
+    {
+      id: '1585',
+      name: 'Runner’s Lunge Stretch (跑者弓步大腿後側與小腿拉伸)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '整條後側鏈 / 膕繩肌 / 小腿比目魚肌',
+      holdSeconds: 45,
+      notes: '前後分腿呈低弓步，前腿微伸直勾起腳尖，感受大腿後側膕繩肌與小腿交替深層牽拉。'
+    },
+    {
+      id: '1511',
+      name: 'Hamstring Stretch (坐姿/站姿單腿膕繩肌拉伸)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '膕繩肌 / 大腿後側',
+      holdSeconds: 35,
+      notes: '一腿前伸腳跟點地，屈髖向後下沉，背部打直感受大腿後側拉長。'
+    },
+    {
+      id: '1576',
+      name: 'Leg Up Hamstring Stretch (仰臥抬腿大腿後側牽引)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '膕繩肌 / 坐骨神經通道',
+      holdSeconds: 35,
+      notes: '平躺雙手抱住大腿後側向上伸展，放鬆大腿後側緊繃。'
+    },
+    {
+      id: '1587',
+      name: 'Seated Wide Angle Pose (坐姿大分腿開髖靈活序列)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '大腿內收肌群 / 膕繩肌',
+      holdSeconds: 45,
+      notes: '雙腿寬幅分開坐於墊上，雙手向前爬行下沉，深度打開雙腿內側與髖部。'
+    },
+    {
+      id: '1548',
+      name: 'Chair Leg Extended Stretch (椅子單腿前伸延展)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '股四頭肌 / 髖屈肌',
+      holdSeconds: 30,
+      notes: '坐在椅子邊緣單腿後屈或前伸，辦公室久坐時的最佳微放鬆動作。'
+    },
+    {
+      id: '1688',
+      name: 'Lunge with Twist (弓步軀幹轉體伸展)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '股四頭肌 / 髖屈肌 / 胸椎旋轉',
+      holdSeconds: 35,
+      notes: '弓步下沉同時軀幹向同側腿方向旋轉，同步放鬆腿部與腰椎。'
+    },
+    {
+      id: '3470',
+      name: 'Forward Lunge Stretch (前跨步低弓步伸展)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '股四頭肌 / 臀大肌',
+      holdSeconds: 35,
+      notes: '大幅度向前跨步下沉，雙手置於膝上，拉伸後腿大腿前側。'
+    },
+    {
+      id: '3218',
+      name: 'Hands Clasped Circular Toe Touch (雙手相扣圓周觸腳)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '膕繩肌 / 臀肌 / 下背',
+      holdSeconds: 35,
+      notes: '雙手相扣做大圓周俯身觸腳，動態牽拉整條大腿後側鏈。'
+    },
+    {
+      id: '3215',
+      name: 'Hands Reversed Circular Toe Touch (反向相扣圓周觸腳)',
+      cat: 'legs_thighs',
+      catName: '👖 大腿前後側',
+      target: '大腿後側 / 側向筋膜鏈',
+      holdSeconds: 35,
+      notes: '反手旋轉觸腳，增加腿部旋轉活動度。'
+    },
+
+    // 5. 小腿腓腸肌、比目魚肌與腳踝 (6 動作)
+    {
+      id: '1377',
+      name: 'Calf Stretch with Hands Against Wall (牆壁小腿跟腱與比目魚肌拉伸)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '小腿腓腸肌 / 膕繩肌 / 足底筋膜',
+      holdSeconds: 30,
+      notes: '前腳掌貼在牆根或踢腳板，膝蓋打直身體前傾。幫助壁球頻繁急停跳躍後的跟腱回彈。'
+    },
+    {
+      id: '1407',
+      name: 'Calf Push Stretch Against Wall (雙手推牆小腿深層拉伸)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '小腿腓腸肌 / 比目魚肌',
+      holdSeconds: 30,
+      notes: '雙手推牆，後腿腳跟扎實踩地，膝蓋微屈或打直，徹底消除小腿蘿蔔緊繃。'
+    },
+    {
+      id: '1398',
+      name: 'Standing Calves Calf Stretch (站姿階梯下沉小腿拉伸)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '小腿腓腸肌 / 跟腱',
+      holdSeconds: 30,
+      notes: '前腳掌踩在階梯邊緣，腳後跟向下方懸空下沉，獲得最大幅度拉伸。'
+    },
+    {
+      id: '1390',
+      name: 'Seated Calf Stretch (坐姿勾腳尖小腿伸展)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '小腿肌群 / 足底筋膜',
+      holdSeconds: 30,
+      notes: '坐姿雙腿前伸，手握腳尖向身體方向拉動，緩解足底與小腿酸脹。'
+    },
+    {
+      id: '1368',
+      name: 'Ankle Circles (腳踝繞環活動度與脛前肌防護)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '踝關節穩定性 / 脛骨前肌',
+      holdSeconds: 30,
+      notes: '抬起單腳順逆時針充分轉動腳踝，提升壁球變向靈活度並預防翻船。'
+    },
+    {
+      id: '0257',
+      name: 'Circles Knee Stretch (屈膝環繞小腿與膝關節放鬆)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '膝關節滑囊 / 小腿上緣',
+      holdSeconds: 30,
+      notes: '雙膝微屈雙手扶膝做小幅度圓周環繞，放鬆膝部與小腿上側筋膜。'
+    },
+    {
+      id: '1686',
+      name: 'Squat with Overhead Reach & Twist (深蹲底部旋轉延伸開髖)',
+      cat: 'calves_ankles',
+      catName: '👟 小腿與腳踝',
+      target: '踝關節背屈 / 髖關節 / 胸椎旋轉',
+      holdSeconds: 50,
+      notes: '蹲至最低點，一手扶地一手向天空旋轉打開，同時增加腳踝活動度避免深蹲卡腳踝。'
+    }
+  ];
+
   // Chinese Names mapping for Muscle Groups
   const MUSCLE_NAMES_ZH = {
     chest: '胸大肌 (Chest)',
@@ -575,8 +1119,10 @@
   // --- APP STATE ---
   const state = {
     currentPhase: 1,
-    currentDay: 'upper', // 'upper', 'lower', 'squash'
+    currentDay: 'upper', // 'upper', 'lower', 'squash', 'mobility'
     currentExercises: [],
+    customMobilityList: null, // Custom user selection of mobility stretches
+    activeStretchCategory: 'all',
     logs: {}, // In-memory session working logs
     heatmapRange: '30', // '7', '30', 'all'
     selectedMuscle: null,
@@ -927,6 +1473,41 @@
     document.getElementById('librarySearchInput').addEventListener('input', filterLibrary);
     document.getElementById('bodyPartFilter').addEventListener('change', filterLibrary);
 
+    // Stretch Picker Modal (58+ Mobility Library)
+    const openStretchPickerBtn = document.getElementById('openStretchPickerBtn');
+    if (openStretchPickerBtn) {
+      openStretchPickerBtn.addEventListener('click', openStretchPickerModal);
+    }
+    const stretchPickerCloseBtn = document.getElementById('stretchPickerCloseBtn');
+    if (stretchPickerCloseBtn) {
+      stretchPickerCloseBtn.addEventListener('click', () => {
+        document.getElementById('stretchPickerModal').classList.add('hidden');
+      });
+    }
+    const resetMobilityDefaultBtn = document.getElementById('resetMobilityDefaultBtn');
+    if (resetMobilityDefaultBtn) {
+      resetMobilityDefaultBtn.addEventListener('click', () => {
+        state.customMobilityList = null;
+        renderMobilityWorkout();
+        showToast('🔄 已恢復當前週期的預設 5 大推薦伸展！');
+      });
+    }
+
+    // Category Tabs in Stretch Picker
+    document.querySelectorAll('#stretchCategoryTabs .stretch-cat-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#stretchCategoryTabs .stretch-cat-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.activeStretchCategory = btn.dataset.cat;
+        filterStretchPicker();
+      });
+    });
+
+    const stretchSearchInput = document.getElementById('stretchSearchInput');
+    if (stretchSearchInput) {
+      stretchSearchInput.addEventListener('input', filterStretchPicker);
+    }
+
     // Export & Clear History
     document.getElementById('exportBtn').addEventListener('click', exportData);
     document.getElementById('clearHistoryBtn').addEventListener('click', clearHistory);
@@ -1097,15 +1678,19 @@
   // --- RENDER MOBILITY WORKOUT FLOW ---
   function renderMobilityWorkout() {
     const plan = PRESET_PLANS[state.currentPhase];
-    const mobilityExercises = plan.mobility || [];
+    const mobilityExercises = state.customMobilityList || plan.mobility || [];
     const container = document.getElementById('mobilityExercisesList');
+    const countDisplay = document.getElementById('mobilityCountDisplay');
+    if (countDisplay) {
+      countDisplay.textContent = mobilityExercises.length;
+    }
     if (!container) return;
 
     container.innerHTML = '';
 
     mobilityExercises.forEach((ex, idx) => {
       const dbItem = window.EXERCISES_DB ? window.EXERCISES_DB.find(item => item.id === ex.id) : null;
-      const thumbUrl = dbItem ? dbItem.image : 'https://placehold.co/80x80/064e3b/ffffff?text=STRETCH';
+      const thumbUrl = dbItem ? dbItem.image : `https://raw.githubusercontent.com/hasaneyldrm/exercises-dataset/main/images/${ex.id}-2gPfomN.jpg`;
       const gifUrl = dbItem ? dbItem.gif_url : '';
       const stateKey = `mobility_${state.currentPhase}_${ex.id || idx}`;
 
@@ -1114,6 +1699,7 @@
       }
 
       const isCompleted = state.logs[stateKey];
+      const isCustomList = state.customMobilityList !== null;
 
       const card = document.createElement('div');
       card.className = 'glass-panel exercise-card mobility-card';
@@ -1132,11 +1718,14 @@
               </div>
             </div>
           </div>
-          <div class="exercise-actions-top">
+          <div class="exercise-actions-top" style="display:flex; align-items:center; gap:8px;">
             ${dbItem ? `
               <button class="btn btn-outline btn-sm view-details-btn" data-exid="${ex.id}" data-gif="${gifUrl}">
                 <span>示範</span>
               </button>
+            ` : ''}
+            ${isCustomList ? `
+              <button class="remove-stretch-card-btn" data-id="${ex.id}" title="從今日清單移除此動作">&times;</button>
             ` : ''}
           </div>
         </div>
@@ -1208,6 +1797,18 @@
       });
     });
 
+    // Remove single stretch card from custom list
+    document.querySelectorAll('.remove-stretch-card-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const exId = btn.dataset.id;
+        if (state.customMobilityList) {
+          state.customMobilityList = state.customMobilityList.filter(item => item.id !== exId);
+          renderMobilityWorkout();
+          showToast('已自今日清單移除此伸展動作');
+        }
+      });
+    });
+
     // Modal detail
     document.querySelectorAll('#mobilityExercisesList .view-details-btn, #mobilityExercisesList .exercise-thumbnail-preview, #mobilityExercisesList .exercise-info h4').forEach(el => {
       el.addEventListener('click', () => {
@@ -1218,13 +1819,128 @@
     });
   }
 
+  // --- STRETCH PICKER MODAL (58+ MOBILITY LIBRARY) ---
+  function openStretchPickerModal() {
+    const modal = document.getElementById('stretchPickerModal');
+    if (!modal) return;
+    
+    // If not initialized yet, clone from preset plan
+    if (!state.customMobilityList) {
+      const plan = PRESET_PLANS[state.currentPhase];
+      state.customMobilityList = [...(plan.mobility || [])];
+    }
+
+    modal.classList.remove('hidden');
+    filterStretchPicker();
+  }
+
+  function filterStretchPicker() {
+    const query = (document.getElementById('stretchSearchInput').value || '').toLowerCase().trim();
+    const cat = state.activeStretchCategory || 'all';
+    const grid = document.getElementById('stretchPickerGrid');
+    if (!grid) return;
+
+    const currentSelectedIds = new Set((state.customMobilityList || []).map(item => item.id));
+
+    const filtered = MOBILITY_EXERCISES_DB.filter(item => {
+      const matchCat = cat === 'all' || item.cat === cat;
+      const matchText = !query ||
+        item.name.toLowerCase().includes(query) ||
+        item.target.toLowerCase().includes(query) ||
+        item.notes.toLowerCase().includes(query) ||
+        item.catName.toLowerCase().includes(query);
+      return matchCat && matchText;
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div style="color:#9ca3af; padding:2.5rem; grid-column:1/-1; text-align:center;">找不到相符的伸展動作，請嘗試更換分類或關鍵字。</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(item => {
+      const isSelected = currentSelectedIds.has(item.id);
+      const dbItem = window.EXERCISES_DB ? window.EXERCISES_DB.find(db => db.id === item.id) : null;
+      const thumbUrl = dbItem ? dbItem.image : `https://raw.githubusercontent.com/hasaneyldrm/exercises-dataset/main/images/${item.id}-2gPfomN.jpg`;
+
+      return `
+        <div class="stretch-picker-card ${isSelected ? 'selected' : ''}" data-id="${item.id}">
+          <div class="stretch-picker-card-header">
+            <img src="${thumbUrl}" alt="${item.name}" class="stretch-thumb" onerror="this.src='https://placehold.co/60x60/083344/ffffff?text=STRETCH'" title="點擊查看詳細說明">
+            <div class="stretch-picker-info">
+              <h5>${item.name}</h5>
+              <div class="stretch-picker-meta">
+                <span class="stretch-hold-tag">${item.catName}</span>
+                <span class="stretch-hold-tag">⏱️ ${item.holdSeconds}s</span>
+              </div>
+            </div>
+          </div>
+          <p class="stretch-picker-desc">${item.notes}</p>
+          <div class="stretch-picker-actions">
+            <button class="btn btn-outline btn-sm preview-stretch-btn" data-id="${item.id}">
+              🔍 示範動畫
+            </button>
+            <button class="add-stretch-btn ${isSelected ? 'active' : ''}" data-id="${item.id}">
+              ${isSelected ? '✓ 已加入今日' : '➕ 加入今日'}
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Bind preview detail click
+    grid.querySelectorAll('.preview-stretch-btn, .stretch-thumb, h5').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const card = el.closest('.stretch-picker-card');
+        const exId = card.dataset.id;
+        openExerciseModal(exId);
+      });
+    });
+
+    // Bind add/remove toggle click
+    grid.querySelectorAll('.add-stretch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const exId = btn.dataset.id;
+        const targetItem = MOBILITY_EXERCISES_DB.find(m => m.id === exId);
+        if (!targetItem) return;
+
+        if (!state.customMobilityList) {
+          const plan = PRESET_PLANS[state.currentPhase];
+          state.customMobilityList = [...(plan.mobility || [])];
+        }
+
+        const existsIndex = state.customMobilityList.findIndex(m => m.id === exId);
+        if (existsIndex >= 0) {
+          state.customMobilityList.splice(existsIndex, 1);
+          btn.classList.remove('active');
+          btn.textContent = '➕ 加入今日';
+          btn.closest('.stretch-picker-card').classList.remove('selected');
+          showToast(`已移除「${targetItem.name.split('(')[0]}」`);
+        } else {
+          state.customMobilityList.push({
+            id: targetItem.id,
+            name: targetItem.name,
+            target: targetItem.target,
+            holdSeconds: targetItem.holdSeconds,
+            notes: targetItem.notes
+          });
+          btn.classList.add('active');
+          btn.textContent = '✓ 已加入今日';
+          btn.closest('.stretch-picker-card').classList.add('selected');
+          showToast(`🎉 已成功將「${targetItem.name.split('(')[0]}」加入今日清單！`);
+        }
+
+        renderMobilityWorkout();
+      });
+    });
+  }
+
   // --- SAVE MOBILITY SESSION ---
   function saveMobilitySession() {
     const date = document.getElementById('mobilityDate').value || new Date().toISOString().split('T')[0];
     const feel = parseInt(document.getElementById('mobilityFeel').value, 10) || 9;
     const notes = document.getElementById('mobilityNotes').value;
     const plan = PRESET_PLANS[state.currentPhase];
-    const mobilityExercises = plan.mobility || [];
+    const mobilityExercises = state.customMobilityList || plan.mobility || [];
 
     const completed = [];
     mobilityExercises.forEach((ex, idx) => {
@@ -1872,7 +2588,15 @@
     }
 
     const filtered = window.EXERCISES_DB.filter(e => {
-      const matchPart = bodyPart === 'all' || e.body_part.toLowerCase() === bodyPart.toLowerCase();
+      let matchPart = false;
+      if (bodyPart === 'all') {
+        matchPart = true;
+      } else if (bodyPart === 'mobility') {
+        matchPart = MOBILITY_EXERCISES_DB.some(m => m.id === e.id) || e.name.toLowerCase().includes('stretch');
+      } else {
+        matchPart = e.body_part.toLowerCase() === bodyPart.toLowerCase();
+      }
+
       const matchText = !query || 
         e.name.toLowerCase().includes(query) || 
         e.target.toLowerCase().includes(query) ||

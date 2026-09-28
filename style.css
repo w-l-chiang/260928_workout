@@ -1226,6 +1226,171 @@ body {
   to { box-shadow: 0 0 18px rgba(245, 158, 11, 0.9); }
 }
 
+.mobility-custom-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px dashed rgba(6, 182, 212, 0.35);
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+}
+
+.stretch-category-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0;
+  margin-top: 0.6rem;
+  scrollbar-width: thin;
+}
+
+.stretch-cat-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+
+.stretch-cat-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.stretch-cat-tab.active {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  border-color: #06b6d4;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.stretch-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.9rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-top: 0.75rem;
+}
+
+.stretch-picker-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.6rem;
+  transition: var(--transition-smooth);
+}
+
+.stretch-picker-card:hover {
+  border-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.08);
+  transform: translateY(-2px);
+}
+
+.stretch-card-top {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.stretch-card-top img {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.stretch-card-meta h5 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.stretch-card-meta h5:hover {
+  color: #22d3ee;
+}
+
+.stretch-card-meta span {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  display: block;
+}
+
+.stretch-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stretch-hold-tag {
+  font-size: 0.7rem;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.add-stretch-btn {
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  background: rgba(6, 182, 212, 0.15);
+  color: #22d3ee;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.add-stretch-btn:hover {
+  background: #06b6d4;
+  color: #fff;
+}
+
+.add-stretch-btn.added {
+  background: #10b981;
+  border-color: #10b981;
+  color: #fff;
+}
+
+.remove-stretch-card-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+}
+
+.remove-stretch-card-btn:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+
 
 /* =========================================================
    ANATOMICAL MUSCLE HEATMAP SECTION

@@ -310,17 +310,29 @@
           <div class="mobility-header-content">
             <span class="mobility-badge">🧘 休息日・零器材徒手伸展</span>
             <h2>10~15 分鐘全身筋膜深度修復 (Mobility Flow)</h2>
-            <p>完全不需要滾筒！精選 5 大深層徒手伸展動作，專為緩解重訓與壁球後的髖部卡關、圓肩胸緊與小腿緊繃設計。每個動作保持 30~45 秒。</p>
+            <p>完全不需要滾筒！精選 5 大黃金伸展動作，亦可從 58+ 動作庫自選特定部位加練，深層釋放髖部、胸肩、脊椎與小腿跟腱緊繃。</p>
           </div>
           <div class="mobility-stat-box">
-            <span class="mobility-stat-num">5</span>
-            <span class="mobility-stat-label">深層拉伸動作</span>
+            <span class="mobility-stat-num" id="mobilityCountDisplay">5</span>
+            <span class="mobility-stat-label">今日伸展動作</span>
           </div>
         </div>
 
         <div class="workout-content-grid">
-          <div class="exercises-container" id="mobilityExercisesList">
-            <!-- Injected dynamically -->
+          <div class="exercises-container" id="mobilityExercisesListWrapper">
+            <div id="mobilityExercisesList" class="exercises-container">
+              <!-- Injected dynamically -->
+            </div>
+            
+            <div class="mobility-custom-toolbar">
+              <button id="openStretchPickerBtn" class="btn btn-secondary btn-icon" style="background: rgba(6,182,212,0.18); border-color:#06b6d4; color:#22d3ee;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                <span>➕ 從 58+ 伸展庫加選動作 (Add Stretches)</span>
+              </button>
+              <button id="resetMobilityDefaultBtn" class="btn btn-outline btn-sm" title="恢復當前週期的 5 個預設推薦動作">
+                <span>🔄 恢復預設推薦</span>
+              </button>
+            </div>
           </div>
 
           <!-- Sidebar for Mobility -->
@@ -743,6 +755,7 @@
           <input type="text" id="librarySearchInput" class="input-field" placeholder="搜尋動作名稱、肌群 (如 chest, squat, lunge, 臥推...)">
           <select id="bodyPartFilter" class="input-field select-field">
             <option value="all">所有部位 (All)</option>
+            <option value="mobility">🧘 徒手伸展與放鬆 (Mobility & Stretches)</option>
             <option value="chest">胸部 (Chest)</option>
             <option value="back">背部 (Back)</option>
             <option value="shoulders">肩膀 (Shoulders)</option>
@@ -759,12 +772,47 @@
     </div>
   </div>
 
+  <!-- Stretch Picker Modal (58+ Categorized Mobility Library) -->
+  <div id="stretchPickerModal" class="modal-overlay hidden">
+    <div class="modal-dialog glass-panel modal-lg">
+      <button class="modal-close-btn" id="stretchPickerCloseBtn">&times;</button>
+      <div class="library-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:1.6rem;">🧘</span>
+          <div>
+            <h2 style="margin-bottom:2px;">58+ 全身零器材徒手伸展庫</h2>
+            <p style="font-size:0.83rem; color:#94a3b8; margin:0;">
+              點選「➕ 加入今日」可自訂加練特定部位，每動作皆具備 30~50s 獨立倒數與動態 GIF 示範
+            </p>
+          </div>
+        </div>
+
+        <div class="stretch-category-tabs" id="stretchCategoryTabs">
+          <button class="stretch-cat-tab active" data-cat="all">全部 (58)</button>
+          <button class="stretch-cat-tab" data-cat="hip_glutes">🦵 髖關節與臀部 (16)</button>
+          <button class="stretch-cat-tab" data-cat="chest_shoulders">👕 胸肩與手臂 (12)</button>
+          <button class="stretch-cat-tab" data-cat="spine_back">🧘 脊椎與核心 (13)</button>
+          <button class="stretch-cat-tab" data-cat="legs_thighs">👖 大腿前後側 (11)</button>
+          <button class="stretch-cat-tab" data-cat="calves_ankles">👟 小腿與腳踝 (6)</button>
+        </div>
+
+        <div class="library-search-bar" style="margin-top:0.75rem;">
+          <input type="text" id="stretchSearchInput" class="input-field" placeholder="搜尋伸展動作 (如: 髖, 梨狀肌, 鴿子式, 胸, 脊椎, 小腿, 蛙式...)">
+        </div>
+      </div>
+
+      <div class="stretch-picker-grid" id="stretchPickerGrid">
+        <!-- Injected items -->
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div id="toast" class="toast hidden"></div>
 
   <!-- Load Database, Supabase SDK and Application Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="exercises_db.js"></script>
-  <script src="app.js?v=2.3"></script>
+  <script src="app.js?v=2.4"></script>
 </body>
 </html>
