@@ -15,9 +15,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
+  <!-- Fullscreen Privacy Passcode Lock Overlay -->
+  <div id="lockOverlay" class="lock-overlay">
+    <div class="lock-card glass-panel">
+      <div class="lock-icon-wrapper">
+        <span class="lock-icon">🔒</span>
+      </div>
+      <h2>FitLog Pro 私人訓練日記</h2>
+      <p class="lock-subtitle">此為私人健身日誌，請輸入專屬 PIN 碼解鎖</p>
+      
+      <div class="pin-form-group">
+        <input type="password" id="pinInput" maxlength="4" pattern="[0-9]*" inputmode="numeric" placeholder="請輸入 4 位密碼" autocomplete="off" autofocus>
+        <button id="unlockBtn" class="btn btn-primary btn-block btn-lg">解鎖進入</button>
+      </div>
+      
+      <div id="lockErrorMsg" class="lock-error-text hidden">⚠️ 密碼錯誤，請重新輸入</div>
+      <div class="lock-footer-hint">💡 首次輸入 1116 正確後將自動記住本裝置</div>
+    </div>
+  </div>
+
   <!-- Background Glow & Mesh -->
   <div class="bg-mesh"></div>
   <div class="bg-glow glow-1"></div>
@@ -68,6 +87,10 @@
         <button id="exportBtn" class="btn btn-outline btn-icon" title="匯出日誌資料">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span>匯出備份</span>
+        </button>
+        <button id="lockAppBtn" class="btn btn-outline btn-icon" title="手動重新鎖定此裝置">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>鎖定</span>
         </button>
       </div>
     </div>
@@ -142,7 +165,7 @@
           </div>
         </div>
 
-        <!-- Rest Timer Widget Inline (Only for strength days) -->
+        <!-- Rest Timer Widget Inline -->
         <div class="rest-timer-widget" id="restTimerWidget">
           <div class="timer-display">
             <span class="timer-label">組間休息計時</span>
@@ -161,13 +184,13 @@
         </div>
       </div>
 
-      <!-- Workout Exercises List Container (For Strength Days) -->
+      <!-- Workout Exercises List Container -->
       <div class="workout-content-grid" id="strengthWorkoutGrid">
         <div class="exercises-container" id="exercisesList">
           <!-- Dynamic Exercise Cards injected by app.js -->
         </div>
 
-        <!-- Sidebar / Floating Summary Card -->
+        <!-- Sidebar / Summary Card -->
         <aside class="workout-sidebar">
           <div class="glass-panel summary-panel">
             <h3>📝 今日重訓日誌總結</h3>
@@ -211,7 +234,7 @@
         </aside>
       </div>
 
-      <!-- SQUASH WORKOUT VIEW (Hidden by default, shown when day === 'squash') -->
+      <!-- SQUASH WORKOUT VIEW -->
       <div id="squashWorkoutView" class="squash-view-container glass-panel hidden">
         <div class="squash-banner">
           <div class="squash-header-content">
@@ -326,34 +349,26 @@
             <div class="body-view-box">
               <span class="view-label">正面 (Anterior)</span>
               <svg id="svgFront" class="anatomical-svg" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg">
-                <!-- Head & Neck -->
                 <circle cx="100" cy="35" r="22" class="body-base" />
                 <path d="M92 57 L108 57 L108 72 L92 72 Z" class="body-base" />
                 
-                <!-- Shoulders Front -->
                 <path id="muscle_delts_front_l" data-muscle="delts" class="muscle-node heat-none" d="M68 76 C62 78 52 88 50 102 C58 106 68 96 72 82 Z" title="三角肌前束 (Front Delts)" />
                 <path id="muscle_delts_front_r" data-muscle="delts" class="muscle-node heat-none" d="M132 76 C138 78 148 88 150 102 C142 106 132 96 128 82 Z" title="三角肌前束 (Front Delts)" />
                 
-                <!-- Chest (Pectorals) -->
                 <path id="muscle_chest_l" data-muscle="chest" class="muscle-node heat-none" d="M74 80 C84 80 97 86 97 106 C85 110 70 102 68 88 Z" title="胸大肌左 (Chest)" />
                 <path id="muscle_chest_r" data-muscle="chest" class="muscle-node heat-none" d="M126 80 C116 80 103 86 103 106 C115 110 130 102 132 88 Z" title="胸大肌右 (Chest)" />
                 
-                <!-- Biceps (Upper Arms) -->
                 <path id="muscle_biceps_l" data-muscle="biceps" class="muscle-node heat-none" d="M48 106 C46 120 48 136 56 142 C60 138 64 122 62 108 Z" title="肱二頭肌 (Biceps)" />
                 <path id="muscle_biceps_r" data-muscle="biceps" class="muscle-node heat-none" d="M152 106 C154 120 152 136 144 142 C140 138 136 122 138 108 Z" title="肱二頭肌 (Biceps)" />
                 
-                <!-- Forearms Front -->
                 <path id="muscle_forearms_l" data-muscle="forearms" class="muscle-node heat-none" d="M54 146 C50 162 48 182 52 195 C56 195 62 178 62 150 Z" />
                 <path id="muscle_forearms_r" data-muscle="forearms" class="muscle-node heat-none" d="M146 146 C150 162 152 182 148 195 C144 195 138 178 138 150 Z" />
 
-                <!-- Abs / Core -->
                 <path id="muscle_abs" data-muscle="abs" class="muscle-node heat-none" d="M78 114 C86 112 114 112 122 114 C122 156 118 168 114 172 C104 174 96 174 86 172 C82 168 78 156 78 114 Z" title="腹直肌與核心 (Abs)" />
                 
-                <!-- Quads (Front Thighs) -->
                 <path id="muscle_quads_l" data-muscle="quads" class="muscle-node heat-none" d="M72 178 C80 176 96 182 96 210 C96 238 92 266 84 274 C76 270 68 238 68 206 Z" title="股四頭肌 (Quads)" />
                 <path id="muscle_quads_r" data-muscle="quads" class="muscle-node heat-none" d="M128 178 C120 176 104 182 104 210 C104 238 108 266 116 274 C124 270 132 238 132 206 Z" title="股四頭肌 (Quads)" />
                 
-                <!-- Knees / Tibialis / Calves Front -->
                 <path id="muscle_calves_fl" data-muscle="calves" class="muscle-node heat-none" d="M72 284 C84 286 86 312 84 346 C76 348 70 330 68 300 Z" title="小腿前側/腓腸 (Calves)" />
                 <path id="muscle_calves_fr" data-muscle="calves" class="muscle-node heat-none" d="M128 284 C116 286 114 312 116 346 C124 348 130 330 132 300 Z" title="小腿前側/腓腸 (Calves)" />
               </svg>
@@ -363,37 +378,28 @@
             <div class="body-view-box">
               <span class="view-label">背面 (Posterior)</span>
               <svg id="svgBack" class="anatomical-svg" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg">
-                <!-- Head & Neck -->
                 <circle cx="100" cy="35" r="22" class="body-base" />
                 <path d="M92 57 L108 57 L108 72 L92 72 Z" class="body-base" />
                 
-                <!-- Traps / Upper Back -->
                 <path id="muscle_traps" data-muscle="back" class="muscle-node heat-none" d="M82 66 L118 66 L128 88 L100 108 L72 88 Z" title="斜方肌/上背 (Traps & Upper Back)" />
                 
-                <!-- Rear Delts -->
                 <path id="muscle_delts_rear_l" data-muscle="delts" class="muscle-node heat-none" d="M68 76 C62 78 52 88 50 102 C58 106 68 96 72 82 Z" />
                 <path id="muscle_delts_rear_r" data-muscle="delts" class="muscle-node heat-none" d="M132 76 C138 78 148 88 150 102 C142 106 132 96 128 82 Z" />
                 
-                <!-- Triceps -->
                 <path id="muscle_triceps_l" data-muscle="triceps" class="muscle-node heat-none" d="M48 106 C46 122 48 138 56 144 C60 140 64 124 62 108 Z" title="肱三頭肌 (Triceps)" />
                 <path id="muscle_triceps_r" data-muscle="triceps" class="muscle-node heat-none" d="M152 106 C154 122 152 138 144 144 C140 140 136 124 138 108 Z" title="肱三頭肌 (Triceps)" />
                 
-                <!-- Lats (Back) -->
                 <path id="muscle_lats_l" data-muscle="back" class="muscle-node heat-none" d="M72 92 C80 96 96 112 96 142 C82 142 70 128 66 106 Z" title="背闊肌 (Lats)" />
                 <path id="muscle_lats_r" data-muscle="back" class="muscle-node heat-none" d="M128 92 C120 96 104 112 104 142 C118 142 130 128 134 106 Z" title="背闊肌 (Lats)" />
                 
-                <!-- Lower Back -->
                 <path id="muscle_lower_back" data-muscle="lower_back" class="muscle-node heat-none" d="M84 140 C94 140 106 140 116 140 C114 162 108 168 100 168 C92 168 86 162 84 140 Z" title="下背/豎脊肌 (Lower Back)" />
 
-                <!-- Glutes (Buttocks) -->
                 <path id="muscle_glutes_l" data-muscle="glutes" class="muscle-node heat-none" d="M70 172 C82 168 98 172 98 200 C86 212 70 208 68 184 Z" title="臀大肌 (Glutes)" />
                 <path id="muscle_glutes_r" data-muscle="glutes" class="muscle-node heat-none" d="M130 172 C118 168 102 172 102 200 C114 212 130 208 132 184 Z" title="臀大肌 (Glutes)" />
                 
-                <!-- Hamstrings (Back Thighs) -->
                 <path id="muscle_hamstrings_l" data-muscle="hamstrings" class="muscle-node heat-none" d="M70 208 C84 212 96 210 94 246 C92 268 84 274 76 272 C70 256 68 232 70 208 Z" title="膕繩肌/大腿後側 (Hamstrings)" />
                 <path id="muscle_hamstrings_r" data-muscle="hamstrings" class="muscle-node heat-none" d="M130 208 C116 212 104 210 106 246 C108 268 116 274 124 272 C130 256 132 232 130 208 Z" title="膕繩肌/大腿後側 (Hamstrings)" />
                 
-                <!-- Calves Back -->
                 <path id="muscle_calves_bl" data-muscle="calves" class="muscle-node heat-none" d="M72 284 C86 286 86 312 84 346 C76 348 68 330 68 300 Z" title="小腿後側 (Calves)" />
                 <path id="muscle_calves_br" data-muscle="calves" class="muscle-node heat-none" d="M128 284 C114 286 114 312 116 346 C124 348 132 330 132 300 Z" title="小腿後側 (Calves)" />
               </svg>
@@ -690,6 +696,6 @@
   <!-- Load Database, Supabase SDK and Application Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="exercises_db.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=2.0"></script>
 </body>
 </html>

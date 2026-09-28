@@ -430,15 +430,70 @@
     }
   }
 
+  // --- PASSCODE PRIVACY SECURITY (PIN: 1116) ---
+  const CORRECT_PIN = '1116';
+
+  function checkAuthStatus() {
+    const isAuth = localStorage.getItem('fitlog_auth_token') === 'fitlog_authorized_1116';
+    const lockOverlay = document.getElementById('lockOverlay');
+    if (lockOverlay) {
+      if (isAuth) {
+        lockOverlay.classList.add('unlocked');
+      } else {
+        lockOverlay.classList.remove('unlocked');
+        const pinInput = document.getElementById('pinInput');
+        if (pinInput) setTimeout(() => pinInput.focus(), 150);
+      }
+    }
+    return isAuth;
+  }
+
+  function handleUnlock() {
+    const pinInput = document.getElementById('pinInput');
+    const errorMsg = document.getElementById('lockErrorMsg');
+    const enteredPin = (pinInput ? pinInput.value : '').trim();
+
+    if (enteredPin === CORRECT_PIN) {
+      localStorage.setItem('fitlog_auth_token', 'fitlog_authorized_1116');
+      if (errorMsg) errorMsg.classList.add('hidden');
+      const lockOverlay = document.getElementById('lockOverlay');
+      if (lockOverlay) lockOverlay.classList.add('unlocked');
+      showToast('🔓 歡迎回來！FitLog Pro 已解鎖');
+      syncWithSupabase();
+    } else {
+      if (errorMsg) errorMsg.classList.remove('hidden');
+      if (pinInput) {
+        pinInput.value = '';
+        pinInput.focus();
+      }
+      playBeep(380, 0.25);
+    }
+  }
+
+  function handleLock() {
+    localStorage.removeItem('fitlog_auth_token');
+    const lockOverlay = document.getElementById('lockOverlay');
+    const pinInput = document.getElementById('pinInput');
+    if (lockOverlay) lockOverlay.classList.remove('unlocked');
+    if (pinInput) {
+      pinInput.value = '';
+      pinInput.focus();
+    }
+    showToast('🔒 已重新鎖定此裝置');
+  }
+
   // --- INITIALIZATION ---
   function init() {
+    checkAuthStatus();
     loadSavedSettings();
     setupDatesToday();
     bindEvents();
     renderCurrentWorkout();
     renderHistory();
     renderHeatmap();
-    syncWithSupabase();
+    if (localStorage.getItem('fitlog_auth_token') === 'fitlog_authorized_1116') {
+      syncWithSupabase();
+    }
   }
 
   // --- SUPABASE CLOUD SYNC FUNCTIONS ---
@@ -671,6 +726,23 @@
     // Export & Clear History
     document.getElementById('exportBtn').addEventListener('click', exportData);
     document.getElementById('clearHistoryBtn').addEventListener('click', clearHistory);
+
+    // Passcode Lock / Unlock Events
+    const unlockBtn = document.getElementById('unlockBtn');
+    const pinInput = document.getElementById('pinInput');
+    const lockAppBtn = document.getElementById('lockAppBtn');
+
+    if (unlockBtn) unlockBtn.addEventListener('click', handleUnlock);
+    if (pinInput) {
+      pinInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') handleUnlock();
+        else if (pinInput.value.length === 4) handleUnlock();
+      });
+      pinInput.addEventListener('input', () => {
+        if (pinInput.value.length === 4) handleUnlock();
+      });
+    }
+    if (lockAppBtn) lockAppBtn.addEventListener('click', handleLock);
   }
 
   // --- WORKOUT RENDERING ---
