@@ -162,39 +162,39 @@
       ],
       mobility: [
         {
-          id: 'mob_1',
-          name: '90/90 Hip Mobility (90/90 髖關節內外旋流動)',
-          target: '髖關節囊 / 臀肌 / 髖屈肌',
+          id: '2567',
+          name: 'Seated Piriformis Stretch (坐姿梨狀肌與髖關節開髖)',
+          target: '臀肌 / 梨狀肌 / 髖關節囊',
           holdSeconds: 35,
-          notes: '雙腿前後屈膝呈90度坐於地面，軀幹前傾感受臀肌深層放鬆，隨後緩慢旋轉至對側。改善深蹲下不去與骨盆卡卡。'
+          notes: '坐於地面或椅子將一腳跨在對側膝上，背部打直前傾，感受深層臀肌與梨狀肌展開。改善深蹲下不去與骨盆卡卡。'
         },
         {
-          id: '1405',
-          name: 'Doorway / Wall Pec Stretch (門框/牆壁胸大肌深層拉伸)',
+          id: '1271',
+          name: 'Chest & Shoulder Stretch (門框/牆壁胸大肌深層拉伸)',
           target: '胸大肌 / 三角肌前束',
           holdSeconds: 30,
           notes: '小臂貼於門框或牆面，軀幹緩慢向前推進並微轉，感受胸肌與肩膀前側充分展開，舒緩久坐打電腦圓肩。'
         },
         {
-          id: '1710',
-          name: 'Piriformis Figure-4 Stretch (仰臥 4 字臀肌與梨狀肌放鬆)',
-          target: '臀大肌 / 梨狀肌 / 坐骨神經通道',
+          id: '1424',
+          name: 'Seated Glute Stretch (仰臥/坐姿臀肌深層放鬆)',
+          target: '臀大肌 / 坐骨神經通道',
           holdSeconds: 35,
-          notes: '平躺將右腳踝跨在左膝上方呈 4 字型，雙手抱住左大腿後側拉向胸口。有效緩解壁球深跨步後臀部酸緊。'
+          notes: '雙手抱住膝蓋拉向胸前，感受臀大肌深層牽拉。有效緩解壁球深跨步救球後的臀部酸緊。'
         },
         {
-          id: '1708',
-          name: 'Wall Calf & Hamstring Stretch (牆壁小腿跟腱與大腿後側拉伸)',
+          id: '1377',
+          name: 'Wall Calf Stretch (牆壁小腿跟腱與比目魚肌拉伸)',
           target: '小腿腓腸肌 / 膕繩肌 / 足底筋膜',
           holdSeconds: 30,
           notes: '前腳掌貼在牆根或踢腳板，膝蓋打直身體前傾。幫助壁球頻繁急停跳躍後的跟腱回彈。'
         },
         {
-          id: '1512',
-          name: 'Cat-Cow to Child’s Pose (貓牛式流動銜接嬰兒式)',
+          id: '1363',
+          name: 'Spine Stretch (脊椎舒展與貓牛式放鬆)',
           target: '全脊椎 / 下背 / 背闊肌',
           holdSeconds: 45,
-          notes: '四足跪姿，吸氣抬頭塌腰、呼氣拱背低頭，最後臀部坐向腳後跟放鬆雙臂前伸。釋放脊椎整週壓力。'
+          notes: '緩慢拱背低頭與吸氣展胸，最後臀部坐向腳後跟放鬆雙臂前伸。釋放脊椎整週重訓與久坐壓力。'
         }
       ]
     },
@@ -340,39 +340,39 @@
       ],
       mobility: [
         {
-          id: 'mob_2_1',
+          id: '1604',
           name: 'World’s Greatest Stretch (世界上最偉大的伸展)',
           target: '胸椎旋轉 / 髖屈肌 / 臀肌 / 膕繩肌',
           holdSeconds: 40,
           notes: '深弓步下沉，同側手肘向下貼近地面，接著向天空打開胸椎並旋轉抬手臂。全方位打開活動度！'
         },
         {
-          id: '1709',
-          name: 'Pigeon Pose (鴿子式深度臀肌開髖)',
-          target: '臀大肌 / 梨狀肌 / 內收肌群',
+          id: '1494',
+          name: 'Butterfly Yoga Pose (蝴蝶式骨盆開髖伸展)',
+          target: '臀大肌 / 內收肌群 / 骨盆底',
           holdSeconds: 40,
-          notes: '前腿屈膝橫於身前，後腿向後筆直延伸，骨盆擺正下沉，軀幹前趴於墊上。'
+          notes: '坐姿雙腳腳掌相對併攏，雙手抱腳，雙膝向下沉並緩慢前傾，深層釋放大腿內側與髖部緊繃。'
         },
         {
-          id: '1713',
-          name: 'Kneeling Hip Flexor & Quad Stretch (跪姿髖屈肌與股四頭肌拉伸)',
+          id: '0613',
+          name: 'Lying Side Quads Stretch (側臥股四頭肌與髖屈肌拉伸)',
           target: '髂腰肌 / 股直肌',
           holdSeconds: 35,
-          notes: '單膝跪地，骨盆後傾微前推，後側手抓住後腳踝拉向臀部，深層拉伸大腿前側與髖屈肌。'
+          notes: '側臥手握上方腳踝拉向臀部，骨盆微後傾保持穩定，深層拉伸大腿前側與髖屈肌。'
         },
         {
-          id: '1405',
-          name: 'Doorway Lat & Shoulder Stretch (背闊肌與肩背延展)',
+          id: '1346',
+          name: 'Kneeling Lat Stretch (跪姿背闊肌與側軀幹延展)',
           target: '背闊肌 / 大圓肌 / 肩關節後側',
           holdSeconds: 35,
-          notes: '雙手扶住門框或柱子，屈髖向後下沉，讓背闊肌與側軀幹充分拉伸延長。'
+          notes: '跪姿雙臂向前延伸貼地，臀部向後下沉，讓背闊肌與側軀幹充分拉伸延長。'
         },
         {
-          id: '1708',
-          name: 'Downward Dog to Calf Pedal (下犬式踩腳踏小腿跟腱拉伸)',
-          target: '整條後側鏈 / 小腿比目魚肌 / 腓腸肌',
+          id: '1585',
+          name: 'Runner’s Lunge Stretch (跑者弓步大腿後側與小腿拉伸)',
+          target: '整條後側鏈 / 膕繩肌 / 小腿比目魚肌',
           holdSeconds: 45,
-          notes: '呈倒 V 字型推起臀部，雙腳輪流向下踩實腳後跟，感受小腿與大腿後側交替深層牽拉。'
+          notes: '前後分腿呈低弓步，前腿微伸直勾起腳尖，感受大腿後側膕繩肌與小腿交替深層牽拉。'
         }
       ]
     },
@@ -518,39 +518,39 @@
       ],
       mobility: [
         {
-          id: '1712',
-          name: 'Frog Stretch (蛙式內收肌深度放鬆)',
+          id: '2571',
+          name: 'Rocking Frog Stretch (蛙式前後搖擺深層開髖)',
           target: '大腿內收肌群 / 髖臼深層靈活度',
           holdSeconds: 45,
-          notes: '雙膝大跨度分開跪地，雙腳內側貼地，小臂撐地後慢慢將臀部向後推。極佳釋放大跨步救球緊繃。'
+          notes: '雙膝大跨度分開跪地，雙腳內側貼地，小臂撐地後前後搖擺，慢慢將臀部向後推。極佳釋放大跨步救球緊繃。'
         },
         {
-          id: 'mob_3_2',
-          name: 'Couch Stretch (沙發伸展 - 極致髖屈肌與股四頭放鬆)',
+          id: '1512',
+          name: 'All Fours Quad Stretch (四足跪姿髖屈肌與股四頭深度放鬆)',
           target: '髂腰肌 / 股直肌 / 骨盆前傾矯正',
           holdSeconds: 45,
-          notes: '後膝貼近牆面或沙發底，前腳踩地呈弓步，軀幹挺直。深層解鎖深蹲與大重量後的下背與髖屈緊繃！'
+          notes: '四足跪姿，向後抓住腳踝拉向臀部，軀幹微挺直。深層解鎖深蹲與大重量後的下背與髖屈緊繃！'
         },
         {
-          id: 'mob_3_3',
-          name: 'Prone Scorpion Stretch (俯臥蠍子式胸背與腰椎旋轉)',
+          id: '1419',
+          name: 'Iron Cross Spinal Twist (鐵十字式胸腰椎旋轉放鬆)',
           target: '胸大肌 / 髖屈肌 / 胸腰椎旋轉鏈',
           holdSeconds: 35,
-          notes: '俯臥雙臂向兩側平展，一側腿抬起彎曲並跨過身體觸碰對側地面。極佳緩解旋轉打球後的脊椎壓力。'
+          notes: '仰臥雙臂向兩側平展，一側腿抬起彎曲並跨過身體觸碰對側地面。極佳緩解旋轉打球後的脊椎壓力。'
         },
         {
-          id: 'mob_3_4',
-          name: 'Dynamic Thread the Needle (穿針式胸椎靈活性流動)',
+          id: '1365',
+          name: 'Upper Back Stretch (上背與肩胛穿針式流動)',
           target: '胸椎靈活度 / 後肩 / 菱形肌',
           holdSeconds: 40,
-          notes: '四足跪姿，一手穿過另一側腋下胸口貼地，呼氣時向天空打開旋轉。增加壁球上肢揮拍幅度。'
+          notes: '雙手抱肩或穿過腋下，呼氣時向天空打開旋轉。增加壁球上肢揮拍幅度。'
         },
         {
-          id: '1368',
-          name: 'Deep Squat Pry & Ankle Rock (深蹲底部開髖與腳踝活動度)',
-          target: '踝關節背屈 / 髖關節 / 骨盆底肌群',
+          id: '1686',
+          name: 'Squat with Overhead Reach & Twist (深蹲底部旋轉延伸開髖)',
+          target: '踝關節背屈 / 髖關節 / 胸椎旋轉',
           holdSeconds: 50,
-          notes: '蹲至最低點，雙肘抵住雙膝內側向外推，重心左右輕微轉移，增加腳踝活動度避免深蹲卡腳踝。'
+          notes: '蹲至最低點，一手扶地一手向天空旋轉打開，同時增加腳踝活動度避免深蹲卡腳踝。'
         }
       ]
     }
@@ -1209,9 +1209,10 @@
     });
 
     // Modal detail
-    document.querySelectorAll('#mobilityExercisesList .view-details-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const exId = btn.dataset.exid;
+    document.querySelectorAll('#mobilityExercisesList .view-details-btn, #mobilityExercisesList .exercise-thumbnail-preview, #mobilityExercisesList .exercise-info h4').forEach(el => {
+      el.addEventListener('click', () => {
+        const card = el.closest('.mobility-card');
+        const exId = card.dataset.mobilityId;
         openExerciseModal(exId);
       });
     });
